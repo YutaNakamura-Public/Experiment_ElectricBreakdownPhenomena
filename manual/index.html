@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+    </script>
+
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<ul>
+<li><a href="#7-electric-breakdown-phenomena">7. Electric Breakdown Phenomena</a>
+<ul>
+<li><a href="#1-purpose">1. Purpose</a></li>
+<li><a href="#2-principles">2. Principles</a>
+<ul>
+<li><a href="#21-electric-breakdown-of-gas">2.1 Electric Breakdown of Gas</a></li>
+<li><a href="#22-standard-sphere-gaps">2.2 Standard Sphere Gaps</a></li>
+<li><a href="#23-needle-plane-electrode">2.3 Needle-Plane Electrode</a></li>
+<li><a href="#24-composite-insulation-system-and-its-interface">2.4 Composite Insulation System and Its Interface</a></li>
+<li><a href="#25-partial-discharges-corona-discharges">2.5 Partial Discharges (Corona Discharges)</a></li>
+<li><a href="#26-types-of-partial-discharges">2.6 Types of Partial Discharges</a></li>
+<li><a href="#27-problems-of-composite-insulation-system">2.7 Problems of Composite Insulation System</a></li>
+<li><a href="#28-equivalent-circuit-for-composite-systems">2.8 Equivalent Circuit for Composite Systems</a></li>
+<li><a href="#29-quantities-describing-partial-discharges">2.9 Quantities Describing Partial Discharges</a></li>
+<li><a href="#210-v-t-characteristics">2.10 $V-t$ Characteristics</a></li>
+</ul>
+</li>
+<li><a href="#3experimental-topics-and-methods">3.Experimental Topics and Methods</a>
+<ul>
+<li><a href="#31-calibration-of-transformer">3.1 Calibration of Transformer</a></li>
+<li><a href="#32-discharge-phenomena-of-standard-sphere-gaps">3.2 Discharge Phenomena of Standard Sphere Gaps</a></li>
+<li><a href="#33-discharge-phenomena-of-a-needle-plane-electrode-in-air">3.3 Discharge Phenomena of a Needle-Plane Electrode in Air</a>
+<ul>
+<li><a href="#331-measurement-of-discharge-voltages-for-alternating-voltage">3.3.1 Measurement of Discharge Voltages for Alternating Voltage</a></li>
+<li><a href="#332-measurement-of-discharge-voltages-for-direct-voltage">3.3.2 Measurement of Discharge Voltages for Direct Voltage</a></li>
+</ul>
+</li>
+<li><a href="#34-measurement-of-surface-discharge-voltage">3.4 Measurement of Surface Discharge Voltage</a></li>
+<li><a href="#35-measurement-of-void-discharge-voltage">3.5 Measurement of Void Discharge Voltage</a></li>
+<li><a href="#36-measurement-of-v---t-characteristics">3.6 Measurement of $V - t$ Characteristics</a></li>
+</ul>
+</li>
+<li><a href="#4experimental-results-and-discussions">4.Experimental results and discussions</a>
+<ul>
+<li><a href="#41-calibration-of-transformer">4.1 Calibration of Transformer</a></li>
+<li><a href="#42-discharge-phenomena-of-standard-sphere-gaps">4.2 Discharge Phenomena of Standard Sphere Gaps</a></li>
+<li><a href="#43-discharge-phenomena-of-a-needle-plane-electrode">4.3 Discharge Phenomena of a Needle-Plane Electrode</a></li>
+<li><a href="#44-measurement-of-surface-discharge-voltage">4.4 Measurement of Surface Discharge Voltage</a></li>
+<li><a href="#45-measurement-of-void-discharge-voltage">4.5 Measurement of Void Discharge Voltage</a></li>
+<li><a href="#46-measurement-of-v---t-characteristics">4.6 Measurement of $V - t$ Characteristics</a></li>
+</ul>
+</li>
+<li><a href="#5-report-contents">5. Report Contents</a></li>
+<li><a href="#experimental-instruments">Experimental Instruments</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="7-electric-breakdown-phenomena">7. Electric Breakdown Phenomena</h1>
+<h2 id="1-purpose">1. Purpose</h2>
+<ol>
+<li>Learn how to operate a high-voltage transformer.</li>
+<li>Learn the method of measuring high voltage with standard sphere gaps.</li>
+<li>Understand and observe electric breakdown phenomena in uniform and non-uniform fields.</li>
+<li>Understand electric breakdown phenomena at material interfaces.</li>
+<li>Understand the partial discharge degradation phenomena of solid insulating materials and learn how to measure partial discharge.</li>
+</ol>
+<p>Keywords : electric breakdown, discharge of gas, interfacial phenomena, partial discharge, $V - t$ characteristics</p>
+<h2 id="2-principles">2. Principles</h2>
+<h3 id="21-electric-breakdown-of-gas">2.1 Electric Breakdown of Gas</h3>
+<p>By gradually increasing the applied voltage to electrodes placed in a gas (e.g. atmospheric air), the insulation between the electrodes is broken down by spark discharge. The performance of the electric breakdown depends upon the uniformity of the electric field between the electrodes. In the case of a uniform field, using an infinite plane-plane electrode or Rogowski electrode, spark discharge occurs when the applied voltage exceeds a critical voltage. This phenomenon is expected for a uniform field.</p>
+<p>In the case of a non-uniform field, using a needle-plane electrode, light of weak intensity is emitted at the tip of the needle electrode and a small electric current flows in the gap when the applied voltage is increased. The phenomenon of partially ionized plasma may be observed only at the tip of the needle electrode and is not observed at any other region of the electrode system. This localized discharge is called &quot;partial discharge&quot; or &quot;corona discharge&quot;. As the applied voltage is increased, partial discharge grows up. Finally, when the applied voltage reaches a critical value, spark discharge occurs between the electrodes.</p>
+<h3 id="22-standard-sphere-gaps">2.2 Standard Sphere Gaps</h3>
+<p>Because the manufacture of Rogowski electrodes, which generate a uniform field, and setting the gap spacing in a Rogowski electrode require high technical skill, the sphere-sphere electrode configuration is often used instead of a Rogowski electrode. Spark discharge occurs directly without corona discharge if the gap spacing is small enough compared with the radius of the sphere electrode. Therefore, the field generated in the gap can be regarded as being uniform. The standard sphere gap consists<br>
+of two sphere electrodes with the same diameter, fixed at the desired spacing. As shown in Table 1, the discharge voltage of a standard sphere gap is uniquely determined by the gap spacing and the diameter of the sphere electrode. Standard sphere gaps are used to measure high alternating, direct and impulse voltages.</p>
+<p>Table 1 shows the discharge voltages for standard conditions (1013 hPa,20${}^\circ$C).<br>
+The corrected discharge voltage for other conditions can be calculated by the following equation:</p>
+<p>$$V = kV_n $$</p>
+<p>$V$: discharge voltage for atmospheric pressure $b$ [hPa] and atmospheric temperature $t$ [${}^\circ$C]</p>
+<p>$V_n$: discharge voltage for standard conditions</p>
+<p>$k$: correction factor for relatice air density $\delta$</p>
+<p>$\delta$: relatice air density</p>
+<p>$$\delta = (\frac{b}{1013}) (\frac{273+20}{273+t}) $$</p>
+<p>Table 1. Discharge voltage of standard sphere gaps at standard conditions[kV] ( diameters of spjere electrode is 20mm )</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">gaps   $[$mm$]$</th>
+<th style="text-align:right">Discharge voltage[kV]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0.5</td>
+<td style="text-align:right">2.8</td>
+</tr>
+<tr>
+<td style="text-align:center">1.0</td>
+<td style="text-align:right">4.7</td>
+</tr>
+<tr>
+<td style="text-align:center">1.5</td>
+<td style="text-align:right">6.4</td>
+</tr>
+<tr>
+<td style="text-align:center">2.0</td>
+<td style="text-align:right">8.0</td>
+</tr>
+<tr>
+<td style="text-align:center">2.5</td>
+<td style="text-align:right">9.6</td>
+</tr>
+<tr>
+<td style="text-align:center">3.0</td>
+<td style="text-align:right">11.2</td>
+</tr>
+<tr>
+<td style="text-align:center">4.0</td>
+<td style="text-align:right">14.4</td>
+</tr>
+<tr>
+<td style="text-align:center">4.5</td>
+<td style="text-align:right">15.9</td>
+</tr>
+<tr>
+<td style="text-align:center">5.0</td>
+<td style="text-align:right">17.4</td>
+</tr>
+</tbody>
+</table>
+<p>Table 2. Correction factor $k$ of discharge voltage of standard sphere gap as a<br>
+function of relative air density $\delta$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$\delta$</th>
+<th style="text-align:right">0.72</th>
+<th style="text-align:right">0.77</th>
+<th style="text-align:right">0.82</th>
+<th style="text-align:right">0.86</th>
+<th style="text-align:right">0.91</th>
+<th style="text-align:right">0.95</th>
+<th style="text-align:right">1.00</th>
+<th style="text-align:right">1.05</th>
+<th style="text-align:right">1.09</th>
+<th style="text-align:right">1.13</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$k$</td>
+<td style="text-align:right">0.70</td>
+<td style="text-align:right">0.75</td>
+<td style="text-align:right">0.80</td>
+<td style="text-align:right">0.85</td>
+<td style="text-align:right">0.90</td>
+<td style="text-align:right">0.95</td>
+<td style="text-align:right">1.00</td>
+<td style="text-align:right">1.05</td>
+<td style="text-align:right">1.10</td>
+<td style="text-align:right">1.15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-needle-plane-electrode">2.3 Needle-Plane Electrode</h3>
+<p>A needle-plane electrode generates a non-uniform field, with the field at the tip of the needle strongly enhanced. In the non-uniform field, stable corona discharges can be observed.<br>
+Spark discharge occurs when the applied voltage is increased sufficiently, with the discharge taking various corona discharge morphologies. The morphology of the corona discharge depends on the field distribution of the space charge in the gap, the waveform, the polarity, and the magnitude of the applied voltage.<br>
+The polarity effect can be observed in that the spark discharge voltage is different for positive and negative needle electrodes.</p>
+<p>Fig.1 shows typical corona discharge current waveforms. Corona discharges occur if the following<br>
+conditions are simultaneously satisfied:</p>
+<ol>
+<li>
+<p>Strong field enhancement occurs in a non-uniform field.</p>
+</li>
+<li>
+<p>The corona discharge reduces the maximum field.</p>
+</li>
+</ol>
+<p>Condition 2. is the necessary condition for the existence of stable corona discharge. If condition 2. is not satisfied, spark discharge occurs due to the growth of the local ionization.</p>
+<p><img src="img/corona_discharge_current_waveforms_for_a_needle-phane_electrode.png" alt=""></p>
+<p>Fig.1 Examples of corona discharge current waveforms for a needle-phane electrode</p>
+<h3 id="24-composite-insulation-system-and-its-interface">2.4 Composite Insulation System and Its Interface</h3>
+<p>In electrical insulation for electric power apparatuses, the use of only gas or liquid, or solid alone as an insulation material is extremely rare.<br>
+Gas and solid or liquid and solid as a composite insulation system are generally used. A composite insulation system consists of two or more different insulation materials. An interface exists at the boundary of the different materials in the composite insulation system. The interface is a weak point of the insulation. Therefore, the electrical performance of the system depends on the state of the interface. For instance, in a composite insulation system of gas and solid, surface discharge occurs at the interface.</p>
+<p>The external interface between gas and solid and the internal interface between solid and solid are well-known practical significant interfaces.<br>
+A polymer insulator with an interface between air and synthetic rubber is a typical example of an external interface. A CV cable with an interface between synthetic rubber and cross-linked polyethylene is a typical example of an internal interface.</p>
+<h3 id="25-partial-discharges-corona-discharges">2.5 Partial Discharges (Corona Discharges)</h3>
+<p>Partial discharge is a localized discharge that occurs in the region of a strongly enhanced field. This discharge had been considered a corona discharge. However, as the discharge pattern does not always express a corona, that is, a small ring that has been used for decoration on the roof of a church, the generic name of this localized discharge has become partial discharge. As mentioned above, by applying a voltage to an electrode system generating a non-uniform field (e.g. a needle-plane electrode), partial discharge can be easily observed.</p>
+<p>Electric power apparatuses with composite insulation are designed so that partial discharges do not occur in service conditions. However, when an overvoltage is applied or when long-term deterioration in the insulation materials has occurred, partial discharge can occur in the region of strongly enhanced fields in composite insulation systems.<br>
+Research has been carried out on electrical insulation diagnosis based on pattern recognit ion of partial discharges.</p>
+<h3 id="26-types-of-partial-discharges">2.6 Types of Partial Discharges</h3>
+<p>Partial discharges in composite insulation systems can be classified into three types, as shown in Fig.2. We note however<br>
+that partial discharges in actual electrical apparatus are more complicated.</p>
+<ol>
+<li>Surface discharges<br>
+Discharges along an interface in a composite insulation system. This type of discharge can be observed along the solid dielectric surface in a gas, along the solid dielectric surface in a liquid, and the interface between a gas and a liquid.</li>
+</ol>
+<p><img src="img/surface_discharges.png" alt=""><br>
+Fig.2(a) Surface discharges</p>
+<ol start="2">
+<li>Gap discharge<br>
+Discharge in the gap between an electrode and a solid. The discharge grows perpendicular to a solid dielectric.</li>
+</ol>
+<p><img src="img/gap_discharge.png" alt=""><br>
+Fig.2(b) gap discharge</p>
+<ol start="3">
+<li>Void discharge<br>
+Discharge in a gaseous cavity within a solid dielectric. The use of a metal electrode does not affect this type of discharge.</li>
+</ol>
+<p><img src="img/void_discharge.png" alt=""><br>
+Fig.2(c) gap discharge<br>
+Fig.2 Types of partial discharges in composite insulation systems</p>
+<h3 id="27-problems-of-composite-insulation-system">2.7 Problems of Composite Insulation System</h3>
+<p>Fig.3 shows a composite insulation system with a gas dielectric (thickness $d_1$ , specific permittivity c1 ) and a solid dielectric (thickness $d_2$ , specific permittivity $\epsilon_2$ ) in a uniform field. When a voltage $V$ is applied to the electrode arrangement, the field strength $E_1$ in the gas dielectric and the field strength $E_2$ in the solid dielectric are given as follows:</p>
+<p>$$E_1 = \frac{\epsilon_2V}{\epsilon_1d_2+\epsilon_2d_1} ,  E_2 = \frac{\epsilon_1V}{\epsilon_1d_2+\epsilon_2d_1}$$</p>
+<p>where these equations are derived by considering only the capacitance of each dielectric.</p>
+<p>As the specific permittivity is unity for air, the field strength in the gas dielectric is increased by a factor of $\epsilon_2$ over that in the solid dielectric. The breakdown strength of air (i.e. the field strength at which electric breakdown occurs) is smaller than that of the solid.<br>
+When an overvoltage is applied to the composite insulation system, partial discharge occurs in the air. As the system does not suffer electrical breakdown (there is no bridging between electrodes) unless breakdown occurs in the solid dielectric, only partial discharge may occur in the air. However, the solid dielectric in the system may deteriorate gradually due to the partial discharge in the air until finally, the insulation system breaks down. Therefore, the insulation of the electric power apparatus is designed so that partial discharge does not occur.</p>
+<p>In the case of a void surrounded by the solid dielectric, as shown in Fig.2(c), the field strength in the void is given as follows:</p>
+<p>$$\begin{aligned}<br>
+E_v &amp;=&amp; \epsilon_s E (the case of a thin void) \<br>
+E_v &amp;=&amp; \frac{3E}{2+\frac{1}{\epsilon_s}} (the case of a spherical void)<br>
+\end{aligned}$$</p>
+<p>where E and cs denote the external electric field and the specific permittivity of the solid, respectively.</p>
+<p>As the field strength in the void is larger than that in the surrounding medium and the electric breakdown strength of air is much smaller than that of the solid, partial discharge (void discharge) may occur in the void. As mentioned above, the surrounding dielectric may deteriorate due to the partial discharge. Therefore, in the design of insulation for electric power apparatus, attention must be paid to removing voids as much as possible or to reducing the volume of cavities to reduce the probability of void discharge occurring.</p>
+<h3 id="28-equivalent-circuit-for-composite-systems">2.8 Equivalent Circuit for Composite Systems</h3>
+<p>To understand partial discharge phenomena, a simplified equivalent circuit is often used.<br>
+Fig.3 shows a typical example of an electrode arrangement of a composite insulation system with a gas dielectric and a solid dielectric. Assuming that a dielectric can be represented by a capacitance only, the composite insulation system shown in<br>
+Fig.3 can be expressed by the equivalent circuit shown in Fig.4.<br>
+Here $C_a$ represents the capacitance of the gas, $C_s$ represents the capacitance of the solid, and $G$ represents the gap.</p>
+<p><img src="img/Construction_of_composite.png" alt=""><br>
+Fig.3 Construction of composite (double layer) insulation<br>
+system</p>
+<p><img src="img/Equivalent_circuit.png" alt=""><br>
+Fig.4 Equivalent circuit</p>
+<p>For a sinusoidal applied voltage $V$ , the voltage across $C_a$ is denoted by $V_a$ and the partial discharge inception voltage of air is denoted by $V_g$. When no partial discharges occur in the gap $G$, the voltage across $C_a$ is denoted by $V_a^{\prime}$ in Fig.4, with the applied voltage divided between $C_a$ and $C_s$. However, as partial discharge occurs in the gap when $V_a$ reaches $V_g$, the voltage across $C_a$ varies as $V_a$. At point 1 in Fig.4, discharge begins in the gap $G$. At point 2, the charge stored by $C_a$ is discharged through $G$, and $C_s$ is recharged from the power supply.<br>
+At this time, the discharge stops. However, as the applied voltage from the power supply continuously increases, $V_a$ across $C_a$ also increases. At point 3, discharge starts in the gap $G$ again when $V_a$ reaches $V_g$.<br>
+As the process of charging and discharging repeats, partial discharge pulses are observed predominantly in the region of the voltage crossover.</p>
+<p><img src="img/Voltage_waveforms_across_air_gap.png" alt=""><br>
+Fig.5 Voltage waveforms across air gap</p>
+<h3 id="29-quantities-describing-partial-discharges">2.9 Quantities Describing Partial Discharges</h3>
+<p>To evaluate partial discharges quantitatively, the following quantities are generally used.</p>
+<ol>
+<li>
+<p>Discharge inception voltage ($V_i$), discharge extinction voltage ($V_e$) : $V_i$ is the voltage at which partial discharge is first observed as the applied voltage is increased. $V_e$ is the voltage at which partial discharge stops being observed as the voltage is decreased after observing the partial discharge inception voltage. The values of these voltages include a scattering statistical factor. They also vary dependent on the voltage history.</p>
+</li>
+<li>
+<p>Charge ($q$): $q$ is the charge of a part ial discharge. It is impossible to find the true value of $q$, though a reasonable<br>
+approximation can be made.</p>
+</li>
+<li>
+<p>Maximum charge ($q_{max}$): $q_{max}$ is the maximum charge of any partial discharges occurring over a given period.</p>
+</li>
+<li>
+<p>Number of partial discharge pulses ($N$): $N$ is the number of partial discharge pulses that occur in unit time. $N$ is usually estimated by the pulse count per second.</p>
+</li>
+<li>
+<p>Discharge energy: This is the energy of a partial discharge.</p>
+</li>
+</ol>
+<p>We must pay attention to the relations between the quantities above and the phase($\phi$) of the applied voltage. Applying the partial discharge quantities to insulation diagnosis has been considered because the values change over time due to the degradation of the insulation performance.</p>
+<p>As discussed in Section 2.8, a pulse-shaped current flows through the system when partial discharge occurs in the material under test. In general, this current can be measured as a pulse-shaped voltage across an appropriate impedance connected to the measuring circuit. Typical test circuits for measuring partial discharges are shown in Fig.5.<br>
+Fig.6(a) shows a test circuit in which the material under test is grounded</p>
+<p><img src="img/Test_circuits_for_measuring_partial_discharges_a.png" alt=""><br>
+Fig.6(a) surface discharges</p>
+<p>Fig.6(b) shows a test circuit in which the material under test is isolated</p>
+<p><img src="img/Test_circuits_for_measuring_partial_discharges_b.png" alt=""><br>
+Fig.6(b) gap discharge</p>
+<p>Fig.6(c) shows a test circuit in which noise reduction can be performed by using two materials under test.</p>
+<p><img src="img/Test_circuits_for_measuring_partial_discharges_c.png" alt=""><br>
+Fig.6(c) void discharge<br>
+Fig.6 Test circuits for measuring partial discharges</p>
+<p>$C_a$,$C_{a1}$,$C_{a2}$ : capacitances of material under test</p>
+<p>$C_k$ : coupling capacitance</p>
+<p>$Z_d$ : detection impedance</p>
+<p>$Z_{ch}$ : choke impedance</p>
+<p>$M $ : measuring circuit</p>
+<p>As shown in Fig.6, the detection impedances can be constructed from resistances, capacitances, inductances and combinations of these.</p>
+<p><img src="img/Detection_impedances_a.png" alt=""><br>
+Fig.7(a) R type</p>
+<p><img src="img/Detection_impedances_b.png" alt=""><br>
+Fig.7(b) CR type</p>
+<p><img src="img/Detection_impedances_c.png" alt=""><br>
+Fig.7(c) L type</p>
+<p><img src="img/Detection_impedances_d.png" alt=""><br>
+Fig.7(d) LC type</p>
+<p>Fig.7. Detection impedances</p>
+<h3 id="210-v-t-characteristics">2.10 $V-t$ Characteristics</h3>
+<p>When a voltage (a high voltage that is used in accelerated testing methods) is applied to a composite insulation system, the relation between the applied voltage $V$ and the time to breakdown (lifetime) $t$ can be expressed by a well-known empirical law:</p>
+<p>$$V^n t = const. $$</p>
+<p>This is called the inverse power law and is applied to insulation diagnosis. The $V - t$ characteristics of an insulation system can be obtained by measuring the lifetime at various applied voltages. $n$ is calculated from two measuring points<br>
+$P_1=(t_1,V_1),P_2=(t_2,V_2) (t_1&gt;t_2,V_1&lt;V_2)$ with the following equation.</p>
+<p>$$n = \frac{\log{t_1}-\log{t_2}}{\log{V_2}-\log{V_1}}  $$</p>
+<h2 id="3experimental-topics-and-methods">3.Experimental Topics and Methods</h2>
+<p>Before all else, all experiments must observe the following safety guidelines:</p>
+<ul>
+<li>Pay special care to avoid getting an electric shock during experiments. Also, keep other people away from your experiment site.</li>
+<li>Confirm that the output voltage of the slidac is zero before turning on the switch.</li>
+<li>Rapidly decrease the applied voltage to zero using the slidac when spark discharge occurs.</li>
+<li>Check the following items before changing the connection of the test circuit:</li>
+</ul>
+<ol>
+<li>Turn off the switch of the power supply.</li>
+<li>Lightly touch the high voltage terminal using the earthed stick.</li>
+<li>Confirm that the output voltage of the slidac is zero.</li>
+</ol>
+<p><u>In a test circuit containing a capacitance, change the connection of the circuit only after discharging by using the earthed stick.</u></p>
+<ul>
+<li>Keep away from areas in which high voltages are generated.</li>
+<li>Shut off the circuit immediately when anything abnormal is observed.</li>
+<li>The experimental circuit must be checked by the supervisor before each experiment is started.</li>
+</ul>
+<h3 id="31-calibration-of-transformer">3.1 Calibration of Transformer</h3>
+<p>In the test circuit shown in Fig.8, find the relation between the input and output voltages by the following procedure.</p>
+<p><img src="img/Calibration_circuit_of_transformer.png" alt=""><br>
+Fig.8 Calibration circuit of transformer</p>
+<ol>
+<li>Apply an appropriate voltage by adjusting the output voltage of the slidac.</li>
+<li>Measure the output voltage of the transformer by using a high-voltage probe and an oscilloscope.</li>
+<li>Measure the output voltage for a few levels of input voltages.</li>
+<li>Make a graph showing the relation between the input and output voltages.</li>
+</ol>
+<h3 id="32-discharge-phenomena-of-standard-sphere-gaps">3.2 Discharge Phenomena of Standard Sphere Gaps</h3>
+<p>In the test circuit shown in Fig.9, observe the discharge phenomena of gas in the uniform field by the following procedure.</p>
+<p><img src="img/Experimental_circuit_for_measuring_discharge_voltage_of_standard_sphere_gaps.png" alt=""><br>
+Fig.9 Experimental circuit for measuring discharge voltages of standard sphere gaps</p>
+<ol>
+<li>
+<p>Set the gap length to 1.5 mm. Increase the applied voltage gradually by adjusting the slidac. Record the voltmeter reading when spark discharge occurs. Repeat the measurement three times and calculate the average spark discharge voltage.</p>
+</li>
+<li>
+<p>Perform the same measurement for gap lengths of 3 mm and 4.5 mm.</p>
+</li>
+</ol>
+<h3 id="33-discharge-phenomena-of-a-needle-plane-electrode-in-air">3.3 Discharge Phenomena of a Needle-Plane Electrode in Air</h3>
+<p>observe the discharge phenomena of the gas in a non-uniform field for alternating<br>
+and direct voltages.</p>
+<h4 id="331-measurement-of-discharge-voltages-for-alternating-voltage">3.3.1 Measurement of Discharge Voltages for Alternating Voltage</h4>
+<p><img src="img/Experimental_circuit_for_measuring_discharge_voltages_of_needle_plane(AC).png" alt=""><br>
+Fig.10 Experimental circuit for measuring discharge voltages of needle-plane electrode (alternating voltage)</p>
+<ol>
+<li>
+<p>Set the gap length to 1.5 mm, 3 mm, and 4.5 mm and perform the<br>
+experiment described in Section 3.2.</p>
+</li>
+<li>
+<p>Apply an appropriate voltage to the needle voltage and confirm that the partial discharge occurs. Record the waveform of the partial discharge current that flows through the circuit.</p>
+</li>
+</ol>
+<h4 id="332-measurement-of-discharge-voltages-for-direct-voltage">3.3.2 Measurement of Discharge Voltages for Direct Voltage</h4>
+<p>For positive and negative needle electrodes, perform the experiment as in Section 3.3.1.</p>
+<p><img src="img/Experimental_circuit_for_measuring_discharge_voltages_of_needle_plane(DC).png" alt=""><br>
+Fig.11 Experimental circuit for measuring discharge voltages of needle-plane electrode (direct voltage)</p>
+<h3 id="34-measurement-of-surface-discharge-voltage">3.4 Measurement of Surface Discharge Voltage</h3>
+<p>In this experiment, a cylindrical solid insulating rod (acrylic resin or glass-fiber reinforced plastic (GFRP)) is placed between two plane electrodes in the air. Surface discharge of the solid-gas composite insulation system is observed for an AC voltage.</p>
+<p><img src="img/Experimental_circuit_for_surface_discharge_voltage_measurement.png" alt=""><br>
+Fig.12 Experimental circuit for surface discharge voltage measurement</p>
+<ol>
+<li>Fix the 5-mm-thick cylindrical solid between the two plane electrodes.</li>
+<li>Increase the applied voltage gradually by adjusting the slidac.<br>
+Record the voltmeter reading when surface discharge occurs and observe the position where the discharges occur.</li>
+<li>Repeat the measurement three times and calculate the average surface discharge voltage.</li>
+<li>Using cylindrical solids with thicknesses of 10 mm and 20 mm, repeat the experiment.</li>
+<li>Repeat the procedure for cylindrical GFRP.</li>
+</ol>
+<h3 id="35-measurement-of-void-discharge-voltage">3.5 Measurement of Void Discharge Voltage</h3>
+<p>Measure the fundamental characteristics of partial discharge in a void formed in a solid dielectric. The samples are made of two or three acrylic plates. The test circuit is shown in Fig.13.<br>
+Measure the dimensions of the void beforehand. Place the acrylic plates between two plane electrodes, and make measurements as described below.</p>
+<p><img src="img/Experimental_circuit_for_void_discharge_and_V-t_characteristics.png" alt=""><br>
+Fig.13 Experimental circuit for void discharge and $V-t$ characteristics</p>
+<ol>
+<li>Increase the applied voltage slowly by adjusting the slidac and measure the partial discharge inception voltage $V_i$.</li>
+<li>Applying a voltage of approximately 120% of V; and confirm the occurrence of steady discharges. Record the amplitude of the discharge pulse-shaped current, the pulse occurrence rate of the discharge, and the pulse occurrence phase of the discharge.</li>
+<li>Decrease the applied voltage slowly by adjusting the slidac and measure the partial discharge extinction voltage $V_e$.</li>
+<li>Repeat the measurement three times and calculate the average $V_i$ and $V_e$.</li>
+</ol>
+<h3 id="36-measurement-of-v---t-characteristics">3.6 Measurement of $V - t$ Characteristics</h3>
+<p>By using a rod-plane electrode, check the degradation of insulation performance in a composite insulation system. Place a polyethylene film of 100$\mu$m thickness between two electrodes, and make measurements as described below. Note that the tip of the rod electrode will lightly touch the surface of the polyethylene film.</p>
+<ol>
+<li>Following the same procedure as in Section 3.5, measure the partial discharge inception and extinction voltages, repeating the measurement three times. After finishing the measurements, remove the detection impedance and coupling capacitance from the experimental circuit.</li>
+<li>Apply a constant high voltage to the rod electrode and measure the time to breakdown (lifetime) of the polyethylene film.</li>
+<li>Renew the film.</li>
+<li>Set a different applied voltage and repeat the experiment until<br>
+obtaining an apropiate constant n of the inverse power law.</li>
+</ol>
+<h2 id="4experimental-results-and-discussions">4.Experimental results and discussions</h2>
+<p>Matters common for all experiments are the following:</p>
+<ol>
+<li>Present all experimental results. All table and figure must be written in English. Note that the simplest and most effective description method is preferred.</li>
+<li>Denote your findings with respect to all tables and figures from above 1...</li>
+<li>Describe the reasons for errors in measured values on multiple measurements.</li>
+</ol>
+<h3 id="41-calibration-of-transformer">4.1 Calibration of Transformer</h3>
+<ol>
+<li>Find the ratio of the transformer.</li>
+<li>Discribe the reason why cause differece between transformation ratio of voltage and winding ratio of primary and secondary.</li>
+</ol>
+<h3 id="42-discharge-phenomena-of-standard-sphere-gaps">4.2 Discharge Phenomena of Standard Sphere Gaps</h3>
+<ol>
+<li>Compare the Experimental and theoricaldischarge voltages.</li>
+<li>Explain why the sphere-sphere gap is used for the measurement of high voltages.</li>
+</ol>
+<h3 id="43-discharge-phenomena-of-a-needle-plane-electrode">4.3 Discharge Phenomena of a Needle-Plane Electrode</h3>
+<ol>
+<li>Based on the experimental results (Standard Sphere Gaps and Needle-Plane Electrode), explain the differences in the discharge of gas in uniform and non-uniform fields.</li>
+<li>Survey polarity effect of corona behavior (difference between positive and negative corona discharges).</li>
+</ol>
+<h3 id="44-measurement-of-surface-discharge-voltage">4.4 Measurement of Surface Discharge Voltage</h3>
+<ol>
+<li>Report the position where the discharges occur.</li>
+<li>Discuss the relationship between discharge voltage and relative permittivity of samples.</li>
+</ol>
+<h3 id="45-measurement-of-void-discharge-voltage">4.5 Measurement of Void Discharge Voltage</h3>
+<ol>
+<li>
+<p>Show graphically relationships between average $V_i$ and $V_e$.</p>
+</li>
+<li>
+<p>Show measured voltage discharge waveforms and report the amplitude of the discharge pulse-shaped current, the pulse occurrence rate of the discharge, and the pulse occurrence phase of the discharge. The reference for counting the number of pulses occurrence must be clearly indicated.</p>
+</li>
+<li>
+<p>The equivalent circuit of an insulation system with a void described in Section 3.5 is shown in Fig.13. Illustrate the theoretical voltage waveforms for the void. The parameters for the equivalent circuit required for the computation will be given at the time of the experiment.</p>
+</li>
+<li>
+<p>Compare measured and theoretical voltage waveforms and discuss differences between them.</p>
+</li>
+</ol>
+<p><img src="img/solid_dielectric_with_a_void.png" alt=""><br>
+<img src="img/equivalent_circuit_b.png" alt=""><br>
+Fig.14 Insulation system with a void and the equivalent<br>
+circuit</p>
+<h3 id="46-measurement-of-v---t-characteristics">4.6 Measurement of $V - t$ Characteristics</h3>
+<ol>
+<li>Show the derivation process of equation<br>
+$$n = \frac{\log{t_1}-\log{t_2}}{\log{V_2}-\log{V_1}}  $$<br>
+from<br>
+$$V^n t = const. $$</li>
+<li>Find the constant $n$ of the inverse power law.</li>
+<li>Discuss the usefulness of the inverse power law about insulation materials.</li>
+</ol>
+<h2 id="5-report-contents">5. Report Contents</h2>
+<p>The report must be included as following contents:</p>
+<ol>
+<li>
+<p>Specified cover (First page)</p>
+</li>
+<li>
+<p>Summary of this report and Purpose in this experiment (Second page). Summary consists of purpose in this experiment, method, results and discussions in each experiment and reveals achievement to purpose in this experiment as conclusion. Summary in this report and purpose in this experiment must be written in second page by only text and not need to use by figure or table.</p>
+</li>
+<li>
+<p>Experimental methods ( Each experimental circuit must be included. Experimental procedures not need to be required )</p>
+</li>
+<li>
+<p>Experimental results and discussions (complete all items in section 4)</p>
+</li>
+<li>
+<p>Impressions on the implementation of this experiment</p>
+</li>
+</ol>
+<p>The references in the report must be specified in the following format:</p>
+<pre class="hljs"><code><div>\[Ref.No\] authors, title, publisher (site:URL), ..., 
+</div></code></pre>
+<p>The references must be written in English or Japanese. See &quot;References&quot; in this paper as an example and learn about &quot;Writing Support&quot; in English site or in Japanese site .</p>
+<h2 id="experimental-instruments">Experimental Instruments</h2>
+<ol>
+<li>Sphere-sphere electrode, needle-plane electrode, plane-plane<br>
+electrode, rod-plane electrode</li>
+<li>Transformer</li>
+<li>Slidac</li>
+<li>High voltage probe</li>
+<li>High Voltage capacitor, high voltage resistor</li>
+<li>Oscilloscope</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<p>[1]The Institute of Electrical Engineers of Japan: &quot;Discharge Handbook&quot;,(1974) (in Japanese)</p>
+<p>[2]T.Ooshige and M.Hara: &quot;High Voltage Phenomena&quot;,Morikita Publishing (1984) (in Japanese)</p>
+<p>[3]M.leda: &quot;Modern High Voltage Engineering&quot;, Ohmsha Publishing (1981) (in Japanese)</p>
+<p>[4]M.Kosaki:&quot;High Voltage Engineering and Electrical Insulation&quot;, Ohmsha Publishing (2000)</p>
+<p>[5]University of Tokyo Library System, &quot;Writing Support&quot;,<br>
+https://www.lib.u-tokyo.ac.jp/en/library/literacy/user-guide/campus/report</p>
+<p>[6]東京大学付属図書館，「レポート・論文作成支援」(in Japanese of Ref.)<br>
+https://www.lib.u-tokyo.ac.jp/ja/library/literacy/user-guide/campus/report</p>
+
+</body>
+</html>
