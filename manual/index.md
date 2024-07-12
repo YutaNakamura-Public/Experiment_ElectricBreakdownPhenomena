@@ -457,5 +457,5 @@ The references must be written in English or Japanese. See "References" in this 
 [5]University of Tokyo Library System, "Writing Support",
 https://www.lib.u-tokyo.ac.jp/en/library/literacy/user-guide/campus/report
 
-[6]東京大学付属図書館，「レポート・論文作成支援」(in Japanese of Ref.)
+[6]東京大学付属図書館，「レポート・論文作成支援」(in Japanese of Ref.[5])
 https://www.lib.u-tokyo.ac.jp/ja/library/literacy/user-guide/campus/report
