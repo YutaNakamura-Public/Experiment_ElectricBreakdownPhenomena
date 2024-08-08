@@ -28,6 +28,8 @@
     - [4.5 Measurement of Void Discharge Voltage](#45-measurement-of-void-discharge-voltage)
     - [4.6 Measurement of $V - t$ Characteristics](#46-measurement-of-v---t-characteristics)
   - [5. Report Contents](#5-report-contents)
+  - [6. Process of this experiment](#6-process-of-this-experiment)
+    - [Time sequence (Before and After the experiment)](#time-sequence-before-and-after-the-experiment)
   - [Experimental Instruments](#experimental-instruments)
   - [Reference](#reference)
 
@@ -433,6 +435,53 @@ The references in the report must be specified in the following format:
 ~~~
 
 The references must be written in English or Japanese. See "References" in this paper as an example and learn about "Writing Support" in English site or in Japanese site .
+
+## 6. Process of this experiment
+
+This theme divides the group into first half group and second half group
+by students list order, which each half group are 5-7 students. You
+should know your group and the members before the experiment and prepare
+each experiment based on following task and each group process shown in
+Table [3](#table:grouping){reference-type="ref"
+reference="table:grouping"}.
+
+Table 3. Each group process
+
+|    Group  | Members | Experiment section number at First week | Experiment section number at Second and Third week(presentation) |
+|:------------:|------------------------------------:|------------------------------------:|------------------------------------:|
+|     First half group     |       Half of the list                         | 3.4 - 3.6  | 3.1 - 3.3 |
+|     Second half group      |          Other than the first half group      |       3.1 - 3.3 | 3.4 - 3.6| 
+
+
+The number of First half group member is rounded up to the nearest whole number.
+
+### Time sequence (Before and After the experiment)
+
+1.  Before the experiment (First week): Learn video and **answer simple
+    questions** about this experiment. The video and the answer form can
+    be found in the moodle course.
+
+2.  Until before day in presentation (Third week): Submit **Presentation
+    file (.pptx)** to designated moodle course.
+
+3.  Before presentation (Third week):Submit **small report printed
+    paper**, which is not online data. Small report must be included
+    **all experimental results and its sufficient explanation**, but the
+    discussions are not required. Small report is necessary not only to
+    show simple figures and tables, but also to obey the manner about
+    the experimental report.
+
+4.  After presentation: Submit **report in Chapter 5 by online via moodle course
+    until specified deadline. The report must be revised according to
+    comments from the instructor in small report to be accepted.
+
+5.  After submission: If the report was accepted, make use of report's
+    feedback from the instructor in the future. If the report was not
+    accepted, **resubmit the reports** revised according to comments
+    from the instructor **within 2 weeks** later from received comments.
+
+The number of late submission in whole experiment are add the number of
+late submission in any process, which is counted per each process.
 
 ## Experimental Instruments
 
