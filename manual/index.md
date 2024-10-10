@@ -423,7 +423,7 @@ The report must be included as following contents:
 
 1.  Specified cover (First page)
 
-2.  Summary of this report and Purpose in this experiment (Second page). Summary consists of purpose in this experiment, method, results and discussions in each experiment and reveals achievement to purpose in this experiment as conclusion. Summary in this report and purpose in this experiment must be written in second page by only text and not need to use by figure or table.
+2.  Summary of this report and purpose in this experiment (Second page). Summary consists of purpose in this experiment, method, results and discussions in each experiment and reveals achievement to purpose in this experiment as conclusion. Summary in this report and purpose in this experiment must be written in second page by only text and not need to use by figure or table.
 3.  Experimental methods ( Each experimental circuit must be included. Experimental procedures not need to be required )
 4.  Experimental results and discussions (complete all items in section 4)
 5.  Impressions on the implementation of this experiment
@@ -438,50 +438,33 @@ The references must be written in English or Japanese. See "References" in this 
 
 ## 6. Process of this experiment
 
-This theme divides the group into first half group and second half group
-by students list order, which each half group are 5-7 students. You
-should know your group and the members before the experiment and prepare
-each experiment based on following task and each group process shown in
-Table [3](#table:grouping){reference-type="ref"
-reference="table:grouping"}.
+This theme divides the group into first half group and second half group by students list order, which each half group are 5-7 students. You should know your group and the members before the experiment and prepare each experiment based on following task and each group process shown in Table 3.
 
 Table 3. Each group process
 
-|    Group  | Members | Experiment section number at First week | Experiment section number at Second and Third week(presentation) |
-|:------------:|------------------------------------:|------------------------------------:|------------------------------------:|
-|     First half group     |       Half of the list                         | 3.4 - 3.6  | 3.1 - 3.3 |
-|     Second half group      |          Other than the first half group      |       3.1 - 3.3 | 3.4 - 3.6| 
+|    Group  | Members | Experiment section number at First week | Second week | Third week(presentation) |
+|:------------:|------------------------------------:|------------------------------------:|------------------------------------:|------------------------------------:|
+|     First half group     |       Half of the list                         |  3.1 - 3.3 | 3.4 - 3.6  | 3.1 - 3.3 |
+|     Second half group      |          Other than the first half group      | 3.4 - 3.6 |  3.1 - 3.3 |  3.4 - 3.6| 
 
 
 The number of First half group member is rounded up to the nearest whole number.
 
 ### Time sequence (Before and After the experiment)
 
-1.  Before the experiment (First week): Learn video and **answer simple
-    questions** about this experiment. The video and the answer form can
-    be found in the moodle course.
+1.  Before the experiment (First week): Learn video and **answer simple questions** about this experiment. The video and the answer form can be found in the moodle course.
 
-2.  Until before day in presentation (Third week): Submit **Presentation
-    file (.pptx)** to designated moodle course.
+2.  Until before day in presentation (Third week): Submit **Presentation file (.pptx)** to designated moodle course.
 
-3.  Before presentation (Third week):Submit **small report printed
-    paper**, which is not online data. Small report must be included
-    **all experimental results and its sufficient explanation**, but the
-    discussions are not required. Small report is necessary not only to
-    show simple figures and tables, but also to obey the manner about
-    the experimental report.
+3.  Before presentation (Third week):Submit **small report printed paper**, which is not online data. Small report must be included
+    **all experimental results and its sufficient explanation**, but the discussions are not required. Small report is necessary not only to show simple figures and tables, but also to obey the manner about the experimental report.
 
-4.  After presentation: Submit **report in Chapter 5 by online via moodle course
-    until specified deadline. The report must be revised according to
-    comments from the instructor in small report to be accepted.
+4.  After presentation: Submit **report in Chapter 5 by online via moodle course until specified deadline. The report must be revised according to comments from the instructor in small report to be accepted.
 
-5.  After submission: If the report was accepted, make use of report's
-    feedback from the instructor in the future. If the report was not
-    accepted, **resubmit the reports** revised according to comments
-    from the instructor **within 2 weeks** later from received comments.
+5.  After submission: If the report was accepted, make use of report's feedback from the instructor in the future. If the report was not
+ accepted, **resubmit the reports** revised according to comments from the instructor **within 2 weeks** later from received comments.
 
-The number of late submission in whole experiment are add the number of
-late submission in any process, which is counted per each process.
+The number of late submission in whole experiment are add the number of late submission in any process, which is counted per each process.
 
 ## Experimental Instruments
 

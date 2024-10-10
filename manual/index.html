@@ -1,218 +1,371 @@
 <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>7&period; Electric Breakdown Phenomena</title>
-            <style>
-/* From extension vscode.github */
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
 }
 
-/* From extension marp-team.marp-vscode */
-#__marp-vscode {
-  all: revert;
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
 }
 
-/* Override VS Code default CSS rules reverting to initial
-   https://github.com/microsoft/vscode/blob/master/src/vs/workbench/contrib/webview/browser/pre/main.js#L53 */
-body.marp-vscode {
-  padding: 0;
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
 }
 
-body.marp-vscode img {
-  max-width: unset;
-  max-height: unset;
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
 }
 
-body.marp-vscode a,
-body.marp-vscode a:hover,
-body.marp-vscode code {
-  color: unset;
+body.showEditorSelection .code-line {
+	position: relative;
 }
 
-body.marp-vscode blockquote {
-  background: unset;
-  border-color: unset;
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
 }
 
-@media screen {
-  body.marp-vscode {
-    overflow-y: scroll;
-  }
-
-  #__marp-vscode [data-marp-vscode-slide-wrapper] {
-    margin: 20px;
-  }
-
-  #__marp-vscode svg[data-marpit-svg] {
-    box-shadow: 0 5px 10px rgb(0 0 0 / 25%);
-    display: block;
-    margin: 0;
-  }
-
-  /* Based on https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-  #code-csp-warning {
-    background-color: #444;
-    box-shadow: 1px 1px 1px rgb(0 0 0 / 25%);
-    color: white;
-    cursor: pointer;
-    font-family: sans-serif;
-    font-size: 12px;
-    line-height: 22px;
-    margin: 16px;
-    padding: 6px;
-    position: fixed;
-    right: 0;
-    text-align: center;
-    top: 0;
-    word-wrap: break-word;
-  }
-
-  #code-csp-warning:hover {
-    text-decoration: none;
-    background-color: #007acc;
-    box-shadow: 2px 2px 2px rgb(0 0 0 / 25%);
-  }
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
 }
 
-@media print {
-  body.marp-vscode #code-csp-warning {
-    display: none;
-  }
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
 }
 
 </style>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+
 <style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
 }
 
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
 }
 </style>
+
 <style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
 }
 
 </style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
 
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
-
-.markdown-alert>:first-child {
-  margin-top: 0
-}
-
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
-
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-important {
-  border-left-color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-warning {
-  border-left-color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-tip {
-  border-left-color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-caution {
-  border-left-color: var(--color-caution);
-}
-
-.markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-caution);
-}
-
-</style>
-        
-        </head>
-        <body class="vscode-body vscode-light">
-            <ul>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<ul>
 <li><a href="#7-electric-breakdown-phenomena">7. Electric Breakdown Phenomena</a>
 <ul>
 <li><a href="#1-purpose">1. Purpose</a></li>
@@ -227,7 +380,7 @@ body.marp-vscode blockquote {
 <li><a href="#27-problems-of-composite-insulation-system">2.7 Problems of Composite Insulation System</a></li>
 <li><a href="#28-equivalent-circuit-for-composite-systems">2.8 Equivalent Circuit for Composite Systems</a></li>
 <li><a href="#29-quantities-describing-partial-discharges">2.9 Quantities Describing Partial Discharges</a></li>
-<li><a href="#210-v-t-characteristics">2.10 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">V-t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> Characteristics</a></li>
+<li><a href="#210-v-t-characteristics">2.10 $V-t$ Characteristics</a></li>
 </ul>
 </li>
 <li><a href="#3experimental-topics-and-methods">3.Experimental Topics and Methods</a>
@@ -242,7 +395,7 @@ body.marp-vscode blockquote {
 </li>
 <li><a href="#34-measurement-of-surface-discharge-voltage">3.4 Measurement of Surface Discharge Voltage</a></li>
 <li><a href="#35-measurement-of-void-discharge-voltage">3.5 Measurement of Void Discharge Voltage</a></li>
-<li><a href="#36-measurement-of-v---t-characteristics">3.6 Measurement of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">V - t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> Characteristics</a></li>
+<li><a href="#36-measurement-of-v---t-characteristics">3.6 Measurement of $V - t$ Characteristics</a></li>
 </ul>
 </li>
 <li><a href="#4experimental-results-and-discussions">4.Experimental results and discussions</a>
@@ -252,7 +405,7 @@ body.marp-vscode blockquote {
 <li><a href="#43-discharge-phenomena-of-a-needle-plane-electrode">4.3 Discharge Phenomena of a Needle-Plane Electrode</a></li>
 <li><a href="#44-measurement-of-surface-discharge-voltage">4.4 Measurement of Surface Discharge Voltage</a></li>
 <li><a href="#45-measurement-of-void-discharge-voltage">4.5 Measurement of Void Discharge Voltage</a></li>
-<li><a href="#46-measurement-of-v---t-characteristics">4.6 Measurement of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">V - t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> Characteristics</a></li>
+<li><a href="#46-measurement-of-v---t-characteristics">4.6 Measurement of $V - t$ Characteristics</a></li>
 </ul>
 </li>
 <li><a href="#5-report-contents">5. Report Contents</a></li>
@@ -275,29 +428,27 @@ body.marp-vscode blockquote {
 <li>Understand electric breakdown phenomena at material interfaces.</li>
 <li>Understand the partial discharge degradation phenomena of solid insulating materials and learn how to measure partial discharge.</li>
 </ol>
-<p>Keywords : electric breakdown, discharge of gas, interfacial phenomena, partial discharge, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">V - t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> characteristics</p>
+<p>Keywords : electric breakdown, discharge of gas, interfacial phenomena, partial discharge, $V - t$ characteristics</p>
 <h2 id="2-principles">2. Principles</h2>
 <h3 id="21-electric-breakdown-of-gas">2.1 Electric Breakdown of Gas</h3>
 <p>By gradually increasing the applied voltage to electrodes placed in a gas (e.g. atmospheric air), the insulation between the electrodes is broken down by spark discharge. The performance of the electric breakdown depends upon the uniformity of the electric field between the electrodes. In the case of a uniform field, using an infinite plane-plane electrode or Rogowski electrode, spark discharge occurs when the applied voltage exceeds a critical voltage. This phenomenon is expected for a uniform field.</p>
 <p>In the case of a non-uniform field, using a needle-plane electrode, light of weak intensity is emitted at the tip of the needle electrode and a small electric current flows in the gap when the applied voltage is increased. The phenomenon of partially ionized plasma may be observed only at the tip of the needle electrode and is not observed at any other region of the electrode system. This localized discharge is called &quot;partial discharge&quot; or &quot;corona discharge&quot;. As the applied voltage is increased, partial discharge grows up. Finally, when the applied voltage reaches a critical value, spark discharge occurs between the electrodes.</p>
 <h3 id="22-standard-sphere-gaps">2.2 Standard Sphere Gaps</h3>
-<p>Because the manufacture of Rogowski electrodes, which generate a uniform field, and setting the gap spacing in a Rogowski electrode require high technical skill, the sphere-sphere electrode configuration is often used instead of a Rogowski electrode. Spark discharge occurs directly without corona discharge if the gap spacing is small enough compared with the radius of the sphere electrode. Therefore, the field generated in the gap can be regarded as being uniform. The standard sphere gap consists
+<p>Because the manufacture of Rogowski electrodes, which generate a uniform field, and setting the gap spacing in a Rogowski electrode require high technical skill, the sphere-sphere electrode configuration is often used instead of a Rogowski electrode. Spark discharge occurs directly without corona discharge if the gap spacing is small enough compared with the radius of the sphere electrode. Therefore, the field generated in the gap can be regarded as being uniform. The standard sphere gap consists<br>
 of two sphere electrodes with the same diameter, fixed at the desired spacing. As shown in Table 1, the discharge voltage of a standard sphere gap is uniquely determined by the gap spacing and the diameter of the sphere electrode. Standard sphere gaps are used to measure high alternating, direct and impulse voltages.</p>
-<p>Table 1 shows the discharge voltages for standard conditions (1013 hPa,20${}^\circ$C).
+<p>Table 1 shows the discharge voltages for standard conditions (1013 hPa,20${}^\circ$C).<br>
 The corrected discharge voltage for other conditions can be calculated by the following equation:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>V</mi><mo>=</mo><mi>k</mi><msub><mi>V</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">V = kV_n 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>: discharge voltage for atmospheric pressure <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> [hPa] and atmospheric temperature <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> [${}^\circ$C]</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">V_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: discharge voltage for standard conditions</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>: correction factor for relatice air density <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi></mrow><annotation encoding="application/x-tex">\delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi></mrow><annotation encoding="application/x-tex">\delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span></span></span></span>: relatice air density</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>δ</mi><mo>=</mo><mo stretchy="false">(</mo><mfrac><mi>b</mi><mn>1013</mn></mfrac><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mfrac><mrow><mn>273</mn><mo>+</mo><mn>20</mn></mrow><mrow><mn>273</mn><mo>+</mo><mi>t</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\delta = (\frac{b}{1013}) (\frac{273+20}{273+t}) 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1408em;vertical-align:-0.7693em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1013</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">273</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">273</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">20</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>$$V = kV_n $$</p>
+<p>$V$: discharge voltage for atmospheric pressure $b$ [hPa] and atmospheric temperature $t$ [${}^\circ$C]</p>
+<p>$V_n$: discharge voltage for standard conditions</p>
+<p>$k$: correction factor for relatice air density $\delta$</p>
+<p>$\delta$: relatice air density</p>
+<p>$$\delta = (\frac{b}{1013}) (\frac{273+20}{273+t}) $$</p>
 <p>Table 1. Discharge voltage of standard sphere gaps at standard conditions[kV] ( diameters of spjere electrode is 20mm )</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">gaps   $[<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">mm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">mm</span></span></span></span>]$</th>
+<th style="text-align:center">gaps   $[$mm$]$</th>
 <th style="text-align:right">Discharge voltage[kV]</th>
 </tr>
 </thead>
@@ -340,12 +491,12 @@ The corrected discharge voltage for other conditions can be calculated by the fo
 </tr>
 </tbody>
 </table>
-<p>Table 2. Correction factor <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> of discharge voltage of standard sphere gap as a
-function of relative air density <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi></mrow><annotation encoding="application/x-tex">\delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span></span></span></span></p>
+<p>Table 2. Correction factor $k$ of discharge voltage of standard sphere gap as a<br>
+function of relative air density $\delta$</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi></mrow><annotation encoding="application/x-tex">\delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span></span></span></span></th>
+<th style="text-align:center">$\delta$</th>
 <th style="text-align:right">0.72</th>
 <th style="text-align:right">0.77</th>
 <th style="text-align:right">0.82</th>
@@ -360,7 +511,7 @@ function of relative air density <span class="katex"><span class="katex-mathml">
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></td>
+<td style="text-align:center">$k$</td>
 <td style="text-align:right">0.70</td>
 <td style="text-align:right">0.75</td>
 <td style="text-align:right">0.80</td>
@@ -375,10 +526,10 @@ function of relative air density <span class="katex"><span class="katex-mathml">
 </tbody>
 </table>
 <h3 id="23-needle-plane-electrode">2.3 Needle-Plane Electrode</h3>
-<p>A needle-plane electrode generates a non-uniform field, with the field at the tip of the needle strongly enhanced. In the non-uniform field, stable corona discharges can be observed.
-Spark discharge occurs when the applied voltage is increased sufficiently, with the discharge taking various corona discharge morphologies. The morphology of the corona discharge depends on the field distribution of the space charge in the gap, the waveform, the polarity, and the magnitude of the applied voltage.
+<p>A needle-plane electrode generates a non-uniform field, with the field at the tip of the needle strongly enhanced. In the non-uniform field, stable corona discharges can be observed.<br>
+Spark discharge occurs when the applied voltage is increased sufficiently, with the discharge taking various corona discharge morphologies. The morphology of the corona discharge depends on the field distribution of the space charge in the gap, the waveform, the polarity, and the magnitude of the applied voltage.<br>
 The polarity effect can be observed in that the spark discharge voltage is different for positive and negative needle electrodes.</p>
-<p>Fig.1 shows typical corona discharge current waveforms. Corona discharges occur if the following
+<p>Fig.1 shows typical corona discharge current waveforms. Corona discharges occur if the following<br>
 conditions are simultaneously satisfied:</p>
 <ol>
 <li>
@@ -389,123 +540,120 @@ conditions are simultaneously satisfied:</p>
 </li>
 </ol>
 <p>Condition 2. is the necessary condition for the existence of stable corona discharge. If condition 2. is not satisfied, spark discharge occurs due to the growth of the local ionization.</p>
-<p><img src="img\corona_discharge_current_waveforms_for_a_needle-phane_electrode.png" alt=""></p>
+<p><img src="img/corona_discharge_current_waveforms_for_a_needle-phane_electrode.png" alt=""></p>
 <p>Fig.1 Examples of corona discharge current waveforms for a needle-phane electrode</p>
 <h3 id="24-composite-insulation-system-and-its-interface">2.4 Composite Insulation System and Its Interface</h3>
-<p>In electrical insulation for electric power apparatuses, the use of only gas or liquid, or solid alone as an insulation material is extremely rare.
+<p>In electrical insulation for electric power apparatuses, the use of only gas or liquid, or solid alone as an insulation material is extremely rare.<br>
 Gas and solid or liquid and solid as a composite insulation system are generally used. A composite insulation system consists of two or more different insulation materials. An interface exists at the boundary of the different materials in the composite insulation system. The interface is a weak point of the insulation. Therefore, the electrical performance of the system depends on the state of the interface. For instance, in a composite insulation system of gas and solid, surface discharge occurs at the interface.</p>
-<p>The external interface between gas and solid and the internal interface between solid and solid are well-known practical significant interfaces.
+<p>The external interface between gas and solid and the internal interface between solid and solid are well-known practical significant interfaces.<br>
 A polymer insulator with an interface between air and synthetic rubber is a typical example of an external interface. A CV cable with an interface between synthetic rubber and cross-linked polyethylene is a typical example of an internal interface.</p>
 <h3 id="25-partial-discharges-corona-discharges">2.5 Partial Discharges (Corona Discharges)</h3>
 <p>Partial discharge is a localized discharge that occurs in the region of a strongly enhanced field. This discharge had been considered a corona discharge. However, as the discharge pattern does not always express a corona, that is, a small ring that has been used for decoration on the roof of a church, the generic name of this localized discharge has become partial discharge. As mentioned above, by applying a voltage to an electrode system generating a non-uniform field (e.g. a needle-plane electrode), partial discharge can be easily observed.</p>
-<p>Electric power apparatuses with composite insulation are designed so that partial discharges do not occur in service conditions. However, when an overvoltage is applied or when long-term deterioration in the insulation materials has occurred, partial discharge can occur in the region of strongly enhanced fields in composite insulation systems.
+<p>Electric power apparatuses with composite insulation are designed so that partial discharges do not occur in service conditions. However, when an overvoltage is applied or when long-term deterioration in the insulation materials has occurred, partial discharge can occur in the region of strongly enhanced fields in composite insulation systems.<br>
 Research has been carried out on electrical insulation diagnosis based on pattern recognit ion of partial discharges.</p>
 <h3 id="26-types-of-partial-discharges">2.6 Types of Partial Discharges</h3>
-<p>Partial discharges in composite insulation systems can be classified into three types, as shown in Fig.2. We note however
+<p>Partial discharges in composite insulation systems can be classified into three types, as shown in Fig.2. We note however<br>
 that partial discharges in actual electrical apparatus are more complicated.</p>
 <ol>
-<li>Surface discharges
+<li>Surface discharges<br>
 Discharges along an interface in a composite insulation system. This type of discharge can be observed along the solid dielectric surface in a gas, along the solid dielectric surface in a liquid, and the interface between a gas and a liquid.</li>
 </ol>
-<p><img src="img\surface_discharges.png" alt="">
+<p><img src="img/surface_discharges.png" alt=""><br>
 Fig.2(a) Surface discharges</p>
 <ol start="2">
-<li>Gap discharge
+<li>Gap discharge<br>
 Discharge in the gap between an electrode and a solid. The discharge grows perpendicular to a solid dielectric.</li>
 </ol>
-<p><img src="img\gap_discharge.png" alt="">
+<p><img src="img/gap_discharge.png" alt=""><br>
 Fig.2(b) gap discharge</p>
 <ol start="3">
-<li>Void discharge
+<li>Void discharge<br>
 Discharge in a gaseous cavity within a solid dielectric. The use of a metal electrode does not affect this type of discharge.</li>
 </ol>
-<p><img src="img\void_discharge.png" alt="">
-Fig.2(c) gap discharge
+<p><img src="img/void_discharge.png" alt=""><br>
+Fig.2(c) gap discharge<br>
 Fig.2 Types of partial discharges in composite insulation systems</p>
 <h3 id="27-problems-of-composite-insulation-system">2.7 Problems of Composite Insulation System</h3>
-<p>Fig.3 shows a composite insulation system with a gas dielectric (thickness <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">d_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> , specific permittivity c1 ) and a solid dielectric (thickness <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">d_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> , specific permittivity <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϵ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\epsilon_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> ) in a uniform field. When a voltage <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> is applied to the electrode arrangement, the field strength <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">E_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> in the gas dielectric and the field strength <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">E_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> in the solid dielectric are given as follows:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>ϵ</mi><mn>2</mn></msub><mi>V</mi></mrow><mrow><msub><mi>ϵ</mi><mn>1</mn></msub><msub><mi>d</mi><mn>2</mn></msub><mo>+</mo><msub><mi>ϵ</mi><mn>2</mn></msub><msub><mi>d</mi><mn>1</mn></msub></mrow></mfrac><mo separator="true">,</mo><msub><mi>E</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>ϵ</mi><mn>1</mn></msub><mi>V</mi></mrow><mrow><msub><mi>ϵ</mi><mn>1</mn></msub><msub><mi>d</mi><mn>2</mn></msub><mo>+</mo><msub><mi>ϵ</mi><mn>2</mn></msub><msub><mi>d</mi><mn>1</mn></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">E_1 = \frac{\epsilon_2V}{\epsilon_1d_2+\epsilon_2d_1} ,  E_2 = \frac{\epsilon_1V}{\epsilon_1d_2+\epsilon_2d_1}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>Fig.3 shows a composite insulation system with a gas dielectric (thickness $d_1$ , specific permittivity c1 ) and a solid dielectric (thickness $d_2$ , specific permittivity $\epsilon_2$ ) in a uniform field. When a voltage $V$ is applied to the electrode arrangement, the field strength $E_1$ in the gas dielectric and the field strength $E_2$ in the solid dielectric are given as follows:</p>
+<p>$$E_1 = \frac{\epsilon_2V}{\epsilon_1d_2+\epsilon_2d_1} ,  E_2 = \frac{\epsilon_1V}{\epsilon_1d_2+\epsilon_2d_1}$$</p>
 <p>where these equations are derived by considering only the capacitance of each dielectric.</p>
-<p>As the specific permittivity is unity for air, the field strength in the gas dielectric is increased by a factor of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϵ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\epsilon_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> over that in the solid dielectric. The breakdown strength of air (i.e. the field strength at which electric breakdown occurs) is smaller than that of the solid.
+<p>As the specific permittivity is unity for air, the field strength in the gas dielectric is increased by a factor of $\epsilon_2$ over that in the solid dielectric. The breakdown strength of air (i.e. the field strength at which electric breakdown occurs) is smaller than that of the solid.<br>
 When an overvoltage is applied to the composite insulation system, partial discharge occurs in the air. As the system does not suffer electrical breakdown (there is no bridging between electrodes) unless breakdown occurs in the solid dielectric, only partial discharge may occur in the air. However, the solid dielectric in the system may deteriorate gradually due to the partial discharge in the air until finally, the insulation system breaks down. Therefore, the insulation of the electric power apparatus is designed so that partial discharge does not occur.</p>
 <p>In the case of a void surrounded by the solid dielectric, as shown in Fig.2(c), the field strength in the void is given as follows:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left right" columnspacing="0em 1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>E</mi><mi>v</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mi>ϵ</mi><mi>s</mi></msub><mi>E</mi><mo stretchy="false">(</mo><mi>t</mi><mi>h</mi><mi>e</mi><mi>c</mi><mi>a</mi><mi>s</mi><mi>e</mi><mi>o</mi><mi>f</mi><mi>a</mi><mi>t</mi><mi>h</mi><mi>i</mi><mi>n</mi><mi>v</mi><mi>o</mi><mi>i</mi><mi>d</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>E</mi><mi>v</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mfrac><mrow><mn>3</mn><mi>E</mi></mrow><mrow><mn>2</mn><mo>+</mo><mfrac><mn>1</mn><msub><mi>ϵ</mi><mi>s</mi></msub></mfrac></mrow></mfrac><mo stretchy="false">(</mo><mi>t</mi><mi>h</mi><mi>e</mi><mi>c</mi><mi>a</mi><mi>s</mi><mi>e</mi><mi>o</mi><mi>f</mi><mi>a</mi><mi>s</mi><mi>p</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>i</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>v</mi><mi>o</mi><mi>i</mi><mi>d</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-  E_v &amp;=&amp; \epsilon_s E (the case of a thin void) \\
-  E_v &amp;=&amp; \frac{3E}{2+\frac{1}{\epsilon_s}} (the case of a spherical void)
-\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.3405em;vertical-align:-1.9203em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.4203em;"><span style="top:-4.9406em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.9203em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9203em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.4203em;"><span style="top:-4.9406em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span><span style="top:-2.9203em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9203em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.4203em;"><span style="top:-4.9406em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">a</span><span class="mord mathnormal">seo</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">hin</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span><span style="top:-2.9203em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.2649em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1645em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4451em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1802em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">a</span><span class="mord mathnormal">seo</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">i</span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9203em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>$$\begin{aligned}<br>
+E_v &amp;=&amp; \epsilon_s E (the case of a thin void) \<br>
+E_v &amp;=&amp; \frac{3E}{2+\frac{1}{\epsilon_s}} (the case of a spherical void)<br>
+\end{aligned}$$</p>
 <p>where E and cs denote the external electric field and the specific permittivity of the solid, respectively.</p>
 <p>As the field strength in the void is larger than that in the surrounding medium and the electric breakdown strength of air is much smaller than that of the solid, partial discharge (void discharge) may occur in the void. As mentioned above, the surrounding dielectric may deteriorate due to the partial discharge. Therefore, in the design of insulation for electric power apparatus, attention must be paid to removing voids as much as possible or to reducing the volume of cavities to reduce the probability of void discharge occurring.</p>
 <h3 id="28-equivalent-circuit-for-composite-systems">2.8 Equivalent Circuit for Composite Systems</h3>
-<p>To understand partial discharge phenomena, a simplified equivalent circuit is often used.
-Fig.3 shows a typical example of an electrode arrangement of a composite insulation system with a gas dielectric and a solid dielectric. Assuming that a dielectric can be represented by a capacitance only, the composite insulation system shown in
-Fig.3 can be expressed by the equivalent circuit shown in Fig.4.
-Here <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> represents the capacitance of the gas, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">C_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> represents the capacitance of the solid, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span> represents the gap.</p>
-<p><img src="img\Construction_of_composite.png" alt="">
-Fig.3 Construction of composite (double layer) insulation
+<p>To understand partial discharge phenomena, a simplified equivalent circuit is often used.<br>
+Fig.3 shows a typical example of an electrode arrangement of a composite insulation system with a gas dielectric and a solid dielectric. Assuming that a dielectric can be represented by a capacitance only, the composite insulation system shown in<br>
+Fig.3 can be expressed by the equivalent circuit shown in Fig.4.<br>
+Here $C_a$ represents the capacitance of the gas, $C_s$ represents the capacitance of the solid, and $G$ represents the gap.</p>
+<p><img src="img/Construction_of_composite.png" alt=""><br>
+Fig.3 Construction of composite (double layer) insulation<br>
 system</p>
-<p><img src="img\Equivalent_circuit.png" alt="">
+<p><img src="img/Equivalent_circuit.png" alt=""><br>
 Fig.4 Equivalent circuit</p>
-<p>For a sinusoidal applied voltage <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> , the voltage across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is denoted by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">V_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and the partial discharge inception voltage of air is denoted by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">V_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>. When no partial discharges occur in the gap <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span>, the voltage across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is denoted by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>V</mi><mi>a</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msubsup></mrow><annotation encoding="application/x-tex">V_a^{\prime}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9989em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-2.453em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span> in Fig.4, with the applied voltage divided between <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">C_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. However, as partial discharge occurs in the gap when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">V_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> reaches <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">V_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>, the voltage across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> varies as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">V_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. At point 1 in Fig.4, discharge begins in the gap <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span>. At point 2, the charge stored by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is discharged through <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">C_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is recharged from the power supply.
-At this time, the discharge stops. However, as the applied voltage from the power supply continuously increases, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">V_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> across <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> also increases. At point 3, discharge starts in the gap <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span> again when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">V_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> reaches <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">V_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>.
+<p>For a sinusoidal applied voltage $V$ , the voltage across $C_a$ is denoted by $V_a$ and the partial discharge inception voltage of air is denoted by $V_g$. When no partial discharges occur in the gap $G$, the voltage across $C_a$ is denoted by $V_a^{\prime}$ in Fig.4, with the applied voltage divided between $C_a$ and $C_s$. However, as partial discharge occurs in the gap when $V_a$ reaches $V_g$, the voltage across $C_a$ varies as $V_a$. At point 1 in Fig.4, discharge begins in the gap $G$. At point 2, the charge stored by $C_a$ is discharged through $G$, and $C_s$ is recharged from the power supply.<br>
+At this time, the discharge stops. However, as the applied voltage from the power supply continuously increases, $V_a$ across $C_a$ also increases. At point 3, discharge starts in the gap $G$ again when $V_a$ reaches $V_g$.<br>
 As the process of charging and discharging repeats, partial discharge pulses are observed predominantly in the region of the voltage crossover.</p>
-<p><img src="img\Voltage_waveforms_across_air_gap.png" alt="">
+<p><img src="img/Voltage_waveforms_across_air_gap.png" alt=""><br>
 Fig.5 Voltage waveforms across air gap</p>
 <h3 id="29-quantities-describing-partial-discharges">2.9 Quantities Describing Partial Discharges</h3>
 <p>To evaluate partial discharges quantitatively, the following quantities are generally used.</p>
 <ol>
 <li>
-<p>Discharge inception voltage (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">V_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>), discharge extinction voltage (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">V_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>) : <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">V_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the voltage at which partial discharge is first observed as the applied voltage is increased. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">V_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the voltage at which partial discharge stops being observed as the voltage is decreased after observing the partial discharge inception voltage. The values of these voltages include a scattering statistical factor. They also vary dependent on the voltage history.</p>
+<p>Discharge inception voltage ($V_i$), discharge extinction voltage ($V_e$) : $V_i$ is the voltage at which partial discharge is first observed as the applied voltage is increased. $V_e$ is the voltage at which partial discharge stops being observed as the voltage is decreased after observing the partial discharge inception voltage. The values of these voltages include a scattering statistical factor. They also vary dependent on the voltage history.</p>
 </li>
 <li>
-<p>Charge (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>): <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span> is the charge of a part ial discharge. It is impossible to find the true value of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>, though a reasonable
+<p>Charge ($q$): $q$ is the charge of a part ial discharge. It is impossible to find the true value of $q$, though a reasonable<br>
 approximation can be made.</p>
 </li>
 <li>
-<p>Maximum charge (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">q_{max}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ma</span><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>): <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">q_{max}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ma</span><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the maximum charge of any partial discharges occurring over a given period.</p>
+<p>Maximum charge ($q_{max}$): $q_{max}$ is the maximum charge of any partial discharges occurring over a given period.</p>
 </li>
 <li>
-<p>Number of partial discharge pulses (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>): <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> is the number of partial discharge pulses that occur in unit time. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> is usually estimated by the pulse count per second.</p>
+<p>Number of partial discharge pulses ($N$): $N$ is the number of partial discharge pulses that occur in unit time. $N$ is usually estimated by the pulse count per second.</p>
 </li>
 <li>
 <p>Discharge energy: This is the energy of a partial discharge.</p>
 </li>
 </ol>
-<p>We must pay attention to the relations between the quantities above and the phase(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϕ</span></span></span></span>) of the applied voltage. Applying the partial discharge quantities to insulation diagnosis has been considered because the values change over time due to the degradation of the insulation performance.</p>
-<p>As discussed in Section 2.8, a pulse-shaped current flows through the system when partial discharge occurs in the material under test. In general, this current can be measured as a pulse-shaped voltage across an appropriate impedance connected to the measuring circuit. Typical test circuits for measuring partial discharges are shown in Fig.5.
+<p>We must pay attention to the relations between the quantities above and the phase($\phi$) of the applied voltage. Applying the partial discharge quantities to insulation diagnosis has been considered because the values change over time due to the degradation of the insulation performance.</p>
+<p>As discussed in Section 2.8, a pulse-shaped current flows through the system when partial discharge occurs in the material under test. In general, this current can be measured as a pulse-shaped voltage across an appropriate impedance connected to the measuring circuit. Typical test circuits for measuring partial discharges are shown in Fig.5.<br>
 Fig.6(a) shows a test circuit in which the material under test is grounded</p>
-<p><img src="img\Test_circuits_for_measuring_partial_discharges_a.png" alt="">
+<p><img src="img/Test_circuits_for_measuring_partial_discharges_a.png" alt=""><br>
 Fig.6(a) surface discharges</p>
 <p>Fig.6(b) shows a test circuit in which the material under test is isolated</p>
-<p><img src="img\Test_circuits_for_measuring_partial_discharges_b.png" alt="">
+<p><img src="img/Test_circuits_for_measuring_partial_discharges_b.png" alt=""><br>
 Fig.6(b) gap discharge</p>
 <p>Fig.6(c) shows a test circuit in which noise reduction can be performed by using two materials under test.</p>
-<p><img src="img\Test_circuits_for_measuring_partial_discharges_c.png" alt="">
-Fig.6(c) void discharge
+<p><img src="img/Test_circuits_for_measuring_partial_discharges_c.png" alt=""><br>
+Fig.6(c) void discharge<br>
 Fig.6 Test circuits for measuring partial discharges</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>a</mi><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">C_{a1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>a</mi><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">C_{a2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> : capacitances of material under test</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">C_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> : coupling capacitance</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">Z_d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> : detection impedance</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mrow><mi>c</mi><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">Z_{ch}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> : choke impedance</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> : measuring circuit</p>
+<p>$C_a$,$C_{a1}$,$C_{a2}$ : capacitances of material under test</p>
+<p>$C_k$ : coupling capacitance</p>
+<p>$Z_d$ : detection impedance</p>
+<p>$Z_{ch}$ : choke impedance</p>
+<p>$M $ : measuring circuit</p>
 <p>As shown in Fig.6, the detection impedances can be constructed from resistances, capacitances, inductances and combinations of these.</p>
-<p><img src="img\Detection_impedances_a.png" alt="">
+<p><img src="img/Detection_impedances_a.png" alt=""><br>
 Fig.7(a) R type</p>
-<p><img src="img\Detection_impedances_b.png" alt="">
+<p><img src="img/Detection_impedances_b.png" alt=""><br>
 Fig.7(b) CR type</p>
-<p><img src="img\Detection_impedances_c.png" alt="">
+<p><img src="img/Detection_impedances_c.png" alt=""><br>
 Fig.7(c) L type</p>
-<p><img src="img\Detection_impedances_d.png" alt="">
+<p><img src="img/Detection_impedances_d.png" alt=""><br>
 Fig.7(d) LC type</p>
 <p>Fig.7. Detection impedances</p>
-<h3 id="210-v-t-characteristics">2.10 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">V-t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> Characteristics</h3>
-<p>When a voltage (a high voltage that is used in accelerated testing methods) is applied to a composite insulation system, the relation between the applied voltage <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> and the time to breakdown (lifetime) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> can be expressed by a well-known empirical law:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>V</mi><mi>n</mi></msup><mi>t</mi><mo>=</mo><mi>c</mi><mi>o</mi><mi>n</mi><mi>s</mi><mi>t</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">V^n t = const. 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7144em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">co</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord">.</span></span></span></span></span></p>
-<p>This is called the inverse power law and is applied to insulation diagnosis. The <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">V - t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> characteristics of an insulation system can be obtained by measuring the lifetime at various applied voltages. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is calculated from two measuring points
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>=</mo><mo stretchy="false">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>V</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo separator="true">,</mo><msub><mi>P</mi><mn>2</mn></msub><mo>=</mo><mo stretchy="false">(</mo><msub><mi>t</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>V</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo>&gt;</mo><msub><mi>t</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>V</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>V</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_1=(t_1,V_1),P_2=(t_2,V_2) (t_1&gt;t_2,V_1&lt;V_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> with the following equation.</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>n</mi><mo>=</mo><mfrac><mrow><mi>log</mi><mo>⁡</mo><msub><mi>t</mi><mn>1</mn></msub><mo>−</mo><mi>log</mi><mo>⁡</mo><msub><mi>t</mi><mn>2</mn></msub></mrow><mrow><mi>log</mi><mo>⁡</mo><msub><mi>V</mi><mn>2</mn></msub><mo>−</mo><mi>log</mi><mo>⁡</mo><msub><mi>V</mi><mn>1</mn></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">n = \frac{\log{t_1}-\log{t_2}}{\log{V_2}-\log{V_1}}  
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2519em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 id="210-v-t-characteristics">2.10 $V-t$ Characteristics</h3>
+<p>When a voltage (a high voltage that is used in accelerated testing methods) is applied to a composite insulation system, the relation between the applied voltage $V$ and the time to breakdown (lifetime) $t$ can be expressed by a well-known empirical law:</p>
+<p>$$V^n t = const. $$</p>
+<p>This is called the inverse power law and is applied to insulation diagnosis. The $V - t$ characteristics of an insulation system can be obtained by measuring the lifetime at various applied voltages. $n$ is calculated from two measuring points<br>
+$P_1=(t_1,V_1),P_2=(t_2,V_2) (t_1&gt;t_2,V_1&lt;V_2)$ with the following equation.</p>
+<p>$$n = \frac{\log{t_1}-\log{t_2}}{\log{V_2}-\log{V_1}}  $$</p>
 <h2 id="3experimental-topics-and-methods">3.Experimental Topics and Methods</h2>
 <p>Before all else, all experiments must observe the following safety guidelines:</p>
 <ul>
@@ -527,7 +675,7 @@ Fig.7(d) LC type</p>
 </ul>
 <h3 id="31-calibration-of-transformer">3.1 Calibration of Transformer</h3>
 <p>In the test circuit shown in Fig.8, find the relation between the input and output voltages by the following procedure.</p>
-<p><img src="img\Calibration_circuit_of_transformer.png" alt="">
+<p><img src="img/Calibration_circuit_of_transformer.png" alt=""><br>
 Fig.8 Calibration circuit of transformer</p>
 <ol>
 <li>Apply an appropriate voltage by adjusting the output voltage of the slidac.</li>
@@ -537,7 +685,7 @@ Fig.8 Calibration circuit of transformer</p>
 </ol>
 <h3 id="32-discharge-phenomena-of-standard-sphere-gaps">3.2 Discharge Phenomena of Standard Sphere Gaps</h3>
 <p>In the test circuit shown in Fig.9, observe the discharge phenomena of gas in the uniform field by the following procedure.</p>
-<p><img src="img\Experimental_circuit_for_measuring_discharge_voltage_of_standard_sphere_gaps.png" alt="">
+<p><img src="img/Experimental_circuit_for_measuring_discharge_voltage_of_standard_sphere_gaps.png" alt=""><br>
 Fig.9 Experimental circuit for measuring discharge voltages of standard sphere gaps</p>
 <ol>
 <li>
@@ -548,14 +696,14 @@ Fig.9 Experimental circuit for measuring discharge voltages of standard sphere g
 </li>
 </ol>
 <h3 id="33-discharge-phenomena-of-a-needle-plane-electrode-in-air">3.3 Discharge Phenomena of a Needle-Plane Electrode in Air</h3>
-<p>observe the discharge phenomena of the gas in a non-uniform field for alternating
+<p>observe the discharge phenomena of the gas in a non-uniform field for alternating<br>
 and direct voltages.</p>
 <h4 id="331-measurement-of-discharge-voltages-for-alternating-voltage">3.3.1 Measurement of Discharge Voltages for Alternating Voltage</h4>
-<p><img src="img\Experimental_circuit_for_measuring_discharge_voltages_of_needle_plane(AC).png" alt="">
+<p><img src="img/Experimental_circuit_for_measuring_discharge_voltages_of_needle_plane(AC).png" alt=""><br>
 Fig.10 Experimental circuit for measuring discharge voltages of needle-plane electrode (alternating voltage)</p>
 <ol>
 <li>
-<p>Set the gap length to 1.5 mm, 3 mm, and 4.5 mm and perform the
+<p>Set the gap length to 1.5 mm, 3 mm, and 4.5 mm and perform the<br>
 experiment described in Section 3.2.</p>
 </li>
 <li>
@@ -564,38 +712,38 @@ experiment described in Section 3.2.</p>
 </ol>
 <h4 id="332-measurement-of-discharge-voltages-for-direct-voltage">3.3.2 Measurement of Discharge Voltages for Direct Voltage</h4>
 <p>For positive and negative needle electrodes, perform the experiment as in Section 3.3.1.</p>
-<p><img src="img\Experimental_circuit_for_measuring_discharge_voltages_of_needle_plane(DC).png" alt="">
+<p><img src="img/Experimental_circuit_for_measuring_discharge_voltages_of_needle_plane(DC).png" alt=""><br>
 Fig.11 Experimental circuit for measuring discharge voltages of needle-plane electrode (direct voltage)</p>
 <h3 id="34-measurement-of-surface-discharge-voltage">3.4 Measurement of Surface Discharge Voltage</h3>
 <p>In this experiment, a cylindrical solid insulating rod (acrylic resin or glass-fiber reinforced plastic (GFRP)) is placed between two plane electrodes in the air. Surface discharge of the solid-gas composite insulation system is observed for an AC voltage.</p>
-<p><img src="img\Experimental_circuit_for_surface_discharge_voltage_measurement.png" alt="">
+<p><img src="img/Experimental_circuit_for_surface_discharge_voltage_measurement.png" alt=""><br>
 Fig.12 Experimental circuit for surface discharge voltage measurement</p>
 <ol>
 <li>Fix the 5-mm-thick cylindrical solid between the two plane electrodes.</li>
-<li>Increase the applied voltage gradually by adjusting the slidac.
+<li>Increase the applied voltage gradually by adjusting the slidac.<br>
 Record the voltmeter reading when surface discharge occurs and observe the position where the discharges occur.</li>
 <li>Repeat the measurement three times and calculate the average surface discharge voltage.</li>
 <li>Using cylindrical solids with thicknesses of 10 mm and 20 mm, repeat the experiment.</li>
 <li>Repeat the procedure for cylindrical GFRP.</li>
 </ol>
 <h3 id="35-measurement-of-void-discharge-voltage">3.5 Measurement of Void Discharge Voltage</h3>
-<p>Measure the fundamental characteristics of partial discharge in a void formed in a solid dielectric. The samples are made of two or three acrylic plates. The test circuit is shown in Fig.13.
+<p>Measure the fundamental characteristics of partial discharge in a void formed in a solid dielectric. The samples are made of two or three acrylic plates. The test circuit is shown in Fig.13.<br>
 Measure the dimensions of the void beforehand. Place the acrylic plates between two plane electrodes, and make measurements as described below.</p>
-<p><img src="img\Experimental_circuit_for_void_discharge_and_V-t_characteristics.png" alt="">
-Fig.13 Experimental circuit for void discharge and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">V-t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> characteristics</p>
+<p><img src="img/Experimental_circuit_for_void_discharge_and_V-t_characteristics.png" alt=""><br>
+Fig.13 Experimental circuit for void discharge and $V-t$ characteristics</p>
 <ol>
-<li>Increase the applied voltage slowly by adjusting the slidac and measure the partial discharge inception voltage <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">V_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</li>
+<li>Increase the applied voltage slowly by adjusting the slidac and measure the partial discharge inception voltage $V_i$.</li>
 <li>Applying a voltage of approximately 120% of V; and confirm the occurrence of steady discharges. Record the amplitude of the discharge pulse-shaped current, the pulse occurrence rate of the discharge, and the pulse occurrence phase of the discharge.</li>
-<li>Decrease the applied voltage slowly by adjusting the slidac and measure the partial discharge extinction voltage <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">V_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</li>
-<li>Repeat the measurement three times and calculate the average <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">V_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">V_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</li>
+<li>Decrease the applied voltage slowly by adjusting the slidac and measure the partial discharge extinction voltage $V_e$.</li>
+<li>Repeat the measurement three times and calculate the average $V_i$ and $V_e$.</li>
 </ol>
-<h3 id="36-measurement-of-v---t-characteristics">3.6 Measurement of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">V - t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> Characteristics</h3>
+<h3 id="36-measurement-of-v---t-characteristics">3.6 Measurement of $V - t$ Characteristics</h3>
 <p>By using a rod-plane electrode, check the degradation of insulation performance in a composite insulation system. Place a polyethylene film of 100$\mu$m thickness between two electrodes, and make measurements as described below. Note that the tip of the rod electrode will lightly touch the surface of the polyethylene film.</p>
 <ol>
 <li>Following the same procedure as in Section 3.5, measure the partial discharge inception and extinction voltages, repeating the measurement three times. After finishing the measurements, remove the detection impedance and coupling capacitance from the experimental circuit.</li>
 <li>Apply a constant high voltage to the rod electrode and measure the time to breakdown (lifetime) of the polyethylene film.</li>
 <li>Renew the film.</li>
-<li>Set a different applied voltage and repeat the experiment until
+<li>Set a different applied voltage and repeat the experiment until<br>
 obtaining an apropiate constant n of the inverse power law.</li>
 </ol>
 <h2 id="4experimental-results-and-discussions">4.Experimental results and discussions</h2>
@@ -628,7 +776,7 @@ obtaining an apropiate constant n of the inverse power law.</li>
 <h3 id="45-measurement-of-void-discharge-voltage">4.5 Measurement of Void Discharge Voltage</h3>
 <ol>
 <li>
-<p>Show graphically relationships between average <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">V_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">V_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+<p>Show graphically relationships between average $V_i$ and $V_e$.</p>
 </li>
 <li>
 <p>Show measured voltage discharge waveforms and report the amplitude of the discharge pulse-shaped current, the pulse occurrence rate of the discharge, and the pulse occurrence phase of the discharge. The reference for counting the number of pulses occurrence must be clearly indicated.</p>
@@ -640,21 +788,17 @@ obtaining an apropiate constant n of the inverse power law.</li>
 <p>Compare measured and theoretical voltage waveforms and discuss differences between them.</p>
 </li>
 </ol>
-<p><img src="img\solid_dielectric_with_a_void.png" alt="">
-<img src="img\equivalent_circuit_b.png" alt="">
-Fig.14 Insulation system with a void and the equivalent
+<p><img src="img/solid_dielectric_with_a_void.png" alt=""><br>
+<img src="img/equivalent_circuit_b.png" alt=""><br>
+Fig.14 Insulation system with a void and the equivalent<br>
 circuit</p>
-<h3 id="46-measurement-of-v---t-characteristics">4.6 Measurement of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">V - t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> Characteristics</h3>
+<h3 id="46-measurement-of-v---t-characteristics">4.6 Measurement of $V - t$ Characteristics</h3>
 <ol>
-<li>Show the derivation process of equation</li>
-</ol>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>n</mi><mo>=</mo><mfrac><mrow><mi>log</mi><mo>⁡</mo><msub><mi>t</mi><mn>1</mn></msub><mo>−</mo><mi>log</mi><mo>⁡</mo><msub><mi>t</mi><mn>2</mn></msub></mrow><mrow><mi>log</mi><mo>⁡</mo><msub><mi>V</mi><mn>2</mn></msub><mo>−</mo><mi>log</mi><mo>⁡</mo><msub><mi>V</mi><mn>1</mn></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">n = \frac{\log{t_1}-\log{t_2}}{\log{V_2}-\log{V_1}}  
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2519em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<p>from</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>V</mi><mi>n</mi></msup><mi>t</mi><mo>=</mo><mi>c</mi><mi>o</mi><mi>n</mi><mi>s</mi><mi>t</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">V^n t = const. 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7144em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">co</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord">.</span></span></span></span></span></p>
-<ol start="2">
-<li>Find the constant <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> of the inverse power law.</li>
+<li>Show the derivation process of equation<br>
+$$n = \frac{\log{t_1}-\log{t_2}}{\log{V_2}-\log{V_1}}  $$<br>
+from<br>
+$$V^n t = const. $$</li>
+<li>Find the constant $n$ of the inverse power law.</li>
 <li>Discuss the usefulness of the inverse power law about insulation materials.</li>
 </ol>
 <h2 id="5-report-contents">5. Report Contents</h2>
@@ -664,7 +808,7 @@ circuit</p>
 <p>Specified cover (First page)</p>
 </li>
 <li>
-<p>Summary of this report and Purpose in this experiment (Second page). Summary consists of purpose in this experiment, method, results and discussions in each experiment and reveals achievement to purpose in this experiment as conclusion. Summary in this report and purpose in this experiment must be written in second page by only text and not need to use by figure or table.</p>
+<p>Summary of this report and purpose in this experiment (Second page). Summary consists of purpose in this experiment, method, results and discussions in each experiment and reveals achievement to purpose in this experiment as conclusion. Summary in this report and purpose in this experiment must be written in second page by only text and not need to use by figure or table.</p>
 </li>
 <li>
 <p>Experimental methods ( Each experimental circuit must be included. Experimental procedures not need to be required )</p>
@@ -677,16 +821,11 @@ circuit</p>
 </li>
 </ol>
 <p>The references in the report must be specified in the following format:</p>
-<pre><code>\[Ref.No\] authors, title, publisher (site:URL), ..., 
-</code></pre>
+<pre class="hljs"><code><div>\[Ref.No\] authors, title, publisher (site:URL), ..., 
+</div></code></pre>
 <p>The references must be written in English or Japanese. See &quot;References&quot; in this paper as an example and learn about &quot;Writing Support&quot; in English site or in Japanese site .</p>
 <h2 id="6-process-of-this-experiment">6. Process of this experiment</h2>
-<p>This theme divides the group into first half group and second half group
-by students list order, which each half group are 5-7 students. You
-should know your group and the members before the experiment and prepare
-each experiment based on following task and each group process shown in
-Table <a href="#table:grouping">3</a>{reference-type=&quot;ref&quot;
-reference=&quot;table:grouping&quot;}.</p>
+<p>This theme divides the group into first half group and second half group by students list order, which each half group are 5-7 students. You should know your group and the members before the experiment and prepare each experiment based on following task and each group process shown in Table 3.</p>
 <p>Table 3. Each group process</p>
 <table>
 <thead>
@@ -694,19 +833,22 @@ reference=&quot;table:grouping&quot;}.</p>
 <th style="text-align:center">Group</th>
 <th style="text-align:right">Members</th>
 <th style="text-align:right">Experiment section number at First week</th>
-<th style="text-align:right">Experiment section number at Second and Third week(presentation)</th>
+<th style="text-align:right">Second week</th>
+<th style="text-align:right">Third week(presentation)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">First half group</td>
 <td style="text-align:right">Half of the list</td>
+<td style="text-align:right">3.1 - 3.3</td>
 <td style="text-align:right">3.4 - 3.6</td>
 <td style="text-align:right">3.1 - 3.3</td>
 </tr>
 <tr>
 <td style="text-align:center">Second half group</td>
 <td style="text-align:right">Other than the first half group</td>
+<td style="text-align:right">3.4 - 3.6</td>
 <td style="text-align:right">3.1 - 3.3</td>
 <td style="text-align:right">3.4 - 3.6</td>
 </tr>
@@ -716,39 +858,27 @@ reference=&quot;table:grouping&quot;}.</p>
 <h3 id="time-sequence-before-and-after-the-experiment">Time sequence (Before and After the experiment)</h3>
 <ol>
 <li>
-<p>Before the experiment (First week): Learn video and <strong>answer simple
-questions</strong> about this experiment. The video and the answer form can
-be found in the moodle course.</p>
+<p>Before the experiment (First week): Learn video and <strong>answer simple questions</strong> about this experiment. The video and the answer form can be found in the moodle course.</p>
 </li>
 <li>
-<p>Until before day in presentation (Third week): Submit <strong>Presentation
-file (.pptx)</strong> to designated moodle course.</p>
+<p>Until before day in presentation (Third week): Submit <strong>Presentation file (.pptx)</strong> to designated moodle course.</p>
 </li>
 <li>
-<p>Before presentation (Third week):Submit <strong>small report printed
-paper</strong>, which is not online data. Small report must be included
-<strong>all experimental results and its sufficient explanation</strong>, but the
-discussions are not required. Small report is necessary not only to
-show simple figures and tables, but also to obey the manner about
-the experimental report.</p>
+<p>Before presentation (Third week):Submit <strong>small report printed paper</strong>, which is not online data. Small report must be included<br>
+<strong>all experimental results and its sufficient explanation</strong>, but the discussions are not required. Small report is necessary not only to show simple figures and tables, but also to obey the manner about the experimental report.</p>
 </li>
 <li>
-<p>After presentation: Submit **report in Chapter 5 by online via moodle course
-until specified deadline. The report must be revised according to
-comments from the instructor in small report to be accepted.</p>
+<p>After presentation: Submit **report in Chapter 5 by online via moodle course until specified deadline. The report must be revised according to comments from the instructor in small report to be accepted.</p>
 </li>
 <li>
-<p>After submission: If the report was accepted, make use of report's
-feedback from the instructor in the future. If the report was not
-accepted, <strong>resubmit the reports</strong> revised according to comments
-from the instructor <strong>within 2 weeks</strong> later from received comments.</p>
+<p>After submission: If the report was accepted, make use of report's feedback from the instructor in the future. If the report was not<br>
+accepted, <strong>resubmit the reports</strong> revised according to comments from the instructor <strong>within 2 weeks</strong> later from received comments.</p>
 </li>
 </ol>
-<p>The number of late submission in whole experiment are add the number of
-late submission in any process, which is counted per each process.</p>
+<p>The number of late submission in whole experiment are add the number of late submission in any process, which is counted per each process.</p>
 <h2 id="experimental-instruments">Experimental Instruments</h2>
 <ol>
-<li>Sphere-sphere electrode, needle-plane electrode, plane-plane
+<li>Sphere-sphere electrode, needle-plane electrode, plane-plane<br>
 electrode, rod-plane electrode</li>
 <li>Transformer</li>
 <li>Slidac</li>
@@ -761,27 +891,10 @@ electrode, rod-plane electrode</li>
 <p>[2]T.Ooshige and M.Hara: &quot;High Voltage Phenomena&quot;,Morikita Publishing (1984) (in Japanese)</p>
 <p>[3]M.leda: &quot;Modern High Voltage Engineering&quot;, Ohmsha Publishing (1981) (in Japanese)</p>
 <p>[4]M.Kosaki:&quot;High Voltage Engineering and Electrical Insulation&quot;, Ohmsha Publishing (2000)</p>
-<p>[5]University of Tokyo Library System, &quot;Writing Support&quot;,
-<a href="https://www.lib.u-tokyo.ac.jp/en/library/literacy/user-guide/campus/report">https://www.lib.u-tokyo.ac.jp/en/library/literacy/user-guide/campus/report</a></p>
-<p>[6]東京大学付属図書館，「レポート・論文作成支援」(in Japanese of Ref.[5])
-<a href="https://www.lib.u-tokyo.ac.jp/ja/library/literacy/user-guide/campus/report">https://www.lib.u-tokyo.ac.jp/ja/library/literacy/user-guide/campus/report</a></p>
+<p>[5]University of Tokyo Library System, &quot;Writing Support&quot;,<br>
+https://www.lib.u-tokyo.ac.jp/en/library/literacy/user-guide/campus/report</p>
+<p>[6]東京大学付属図書館，「レポート・論文作成支援」(in Japanese of Ref.[5])<br>
+https://www.lib.u-tokyo.ac.jp/ja/library/literacy/user-guide/campus/report</p>
 
-            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
-            <script async type="text/javascript">
-/* From extension marp-team.marp-vscode */
-(()=>{var U=Object.defineProperty;var d=($,E)=>U($,"name",{value:E,configurable:!0});(()=>{var $={676:(w,b,g)=>{w.exports=g(185)},185:(w,b)=>{"use strict";var g;g={value:!0};const x={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},k="data-marp-auto-scaling-wrapper",u="data-marp-auto-scaling-svg",c="data-marp-auto-scaling-container",T=class T extends HTMLElement{constructor(){super(),this.svgPreserveAspectRatio="xMinYMid meet";const s=d(i=>([n])=>{const{width:e,height:t}=n.contentRect;this[i]={width:e,height:t},this.updateSVGRect()},"t");this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(s("containerSize")),this.wrapperObserver=new ResizeObserver((...i)=>{s("wrapperSize")(...i),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){var s,i,n,e,t;this.shadowRoot.innerHTML=`
-<style>
-  svg[${u}] { display: block; width: 100%; height: auto; vertical-align: top; }
-  span[${c}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }
-</style>
-<div ${k}>
-  <svg part="svg" ${u}>
-    <foreignObject><span ${c}><slot></slot></span></foreignObject>
-  </svg>
-</div>
-    `.split(/\n\s*/).join(""),this.wrapper=(s=this.shadowRoot.querySelector(`div[${k}]`))!==null&&s!==void 0?s:void 0;const o=this.svg;this.svg=(n=(i=this.wrapper)===null||i===void 0?void 0:i.querySelector(`svg[${u}]`))!==null&&n!==void 0?n:void 0,this.svg!==o&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=(t=(e=this.svg)===null||e===void 0?void 0:e.querySelector(`span[${c}]`))!==null&&t!==void 0?t:void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:s}=this;s&&(s.style.display="inline",requestAnimationFrame(()=>{s.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(s){const i=d(()=>{const n=(()=>{const e=s.getPropertyValue("--preserve-aspect-ratio");return e?e.trim():`x${(({textAlign:t,direction:o})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if(t==="start"||t==="end"){let a=o==="rtl";return t==="end"&&(a=!a),a?"Max":"Min"}return"Mid"})(s)}YMid meet`})();n!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=n,this.updateSVGRect()),s===this.svgComputedStyle&&requestAnimationFrame(i)},"e");i()}updateSVGRect(){var s,i,n,e,t,o,a;let p=Math.ceil((i=(s=this.containerSize)===null||s===void 0?void 0:s.width)!==null&&i!==void 0?i:0);const h=Math.ceil((e=(n=this.containerSize)===null||n===void 0?void 0:n.height)!==null&&e!==void 0?e:0);this.dataset.downscaleOnly!==void 0&&(p=Math.max(p,(o=(t=this.wrapperSize)===null||t===void 0?void 0:t.width)!==null&&o!==void 0?o:0));const f=(a=this.svg)===null||a===void 0?void 0:a.querySelector(":scope > foreignObject");if(f?.setAttribute("width",`${p}`),f?.setAttribute("height",`${h}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${p} ${h}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=p<=0||h<=0?"0":""),this.container){const _=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=_.startsWith("xmid")||_.startsWith("xmax")?"auto":"0",this.container.style.marginRight=_.startsWith("xmi")?"auto":"0"}}};d(T,"s");let r=T;const m=d((l,{attrs:s={},style:i})=>class extends l{constructor(...n){super(...n);for(const[e,t]of Object.entries(s))this.hasAttribute(e)||this.setAttribute(e,t);this.attachShadow({mode:"open"})}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_update(){const n=i?`<style>:host { ${i} }</style>`:"";let e="<slot></slot>";const{autoScaling:t}=this.dataset;t!==void 0&&(e=`<marp-auto-scaling exportparts="svg:auto-scaling" ${t==="downscale-only"?"data-downscale-only":""}>${e}</marp-auto-scaling>`),this.shadowRoot.innerHTML=n+e}},"o");let v;const j=Symbol();let C;const z="marpitSVGPolyfill:setZoomFactor,",A=Symbol(),D=Symbol(),W=d(()=>{const l=navigator.vendor==="Apple Computer, Inc.",s=l?[B]:[],i={then:n=>(l?(async()=>{if(C===void 0){const e=document.createElement("canvas");e.width=10,e.height=10;const t=e.getContext("2d"),o=new Image(10,10),a=new Promise(p=>{o.addEventListener("load",()=>p())});o.crossOrigin="anonymous",o.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await a,t.drawImage(o,0,0),C=t.getImageData(5,5,1,1).data[3]<128}return C})().then(e=>{n?.(e?[B]:[])}):n?.([]),i)};return Object.assign(s,i)},"h");let H,O;function B(l){const s=typeof l=="object"&&l.target||document,i=typeof l=="object"?l.zoom:l;window[D]||(Object.defineProperty(window,D,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:e,origin:t})=>{if(t===window.origin)try{if(e&&typeof e=="string"&&e.startsWith(z)){const[,o]=e.split(","),a=Number.parseFloat(o);Number.isNaN(a)||(O=a)}}catch(o){console.error(o)}}));let n=!1;Array.from(s.querySelectorAll("svg[data-marpit-svg]"),e=>{var t,o,a,p;e.style.transform||(e.style.transform="translateZ(0)");const h=i||O||e.currentScale||1;H!==h&&(H=h,n=h);const f=e.getBoundingClientRect(),{length:_}=e.children;for(let F=0;F<_;F+=1){const S=e.children[F];if(S.getScreenCTM){const y=S.getScreenCTM();if(y){const I=(o=(t=S.x)===null||t===void 0?void 0:t.baseVal.value)!==null&&o!==void 0?o:0,Z=(p=(a=S.y)===null||a===void 0?void 0:a.baseVal.value)!==null&&p!==void 0?p:0,Y=S.children.length;for(let R=0;R<Y;R+=1){const N=S.children[R];if(N.tagName==="SECTION"){const{style:q}=N;q.transformOrigin||(q.transformOrigin=`${-I}px ${-Z}px`),q.transform=`scale(${h}) matrix(${y.a}, ${y.b}, ${y.c}, ${y.d}, ${y.e-f.left}, ${y.f-f.top}) translateZ(0.0001px)`;break}}}}}}),n!==!1&&Array.from(s.querySelectorAll("iframe"),({contentWindow:e})=>{e?.postMessage(`${z}${n}`,window.origin==="null"?"*":window.origin)})}d(B,"u");function P({once:l=!1,target:s=document}={}){const i=function(n=document){if(n[A])return n[A];let e=!0;const t=d(()=>{e=!1,delete n[A]},"i");Object.defineProperty(n,A,{configurable:!0,value:t});let o=[],a=!1;(async()=>{try{o=await W()}finally{a=!0}})();const p=d(()=>{for(const h of o)h({target:n});a&&o.length===0||e&&window.requestAnimationFrame(p)},"o");return p(),t}(s);return l?(i(),()=>{}):i}d(P,"v"),H=1,O=void 0;const G=P,M=Symbol(),L=d((l=document)=>{if(typeof window>"u")throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const t=window[j];t||customElements.define("marp-auto-scaling",r);for(const o of Object.keys(x)){const a=`marp-${o}`,p=x[o].proto();v!=null||(v=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is")),v&&p!==HTMLElement?t||customElements.define(a,m(p,{style:x[o].style}),{extends:o}):(t||customElements.define(a,m(HTMLElement,x[o])),e.querySelectorAll(`${o}[is="${a}"]`).forEach(h=>{h.outerHTML=h.outerHTML.replace(new RegExp(`^<${o}`,"i"),`<${a}`).replace(new RegExp(`</${o}>$`,"i"),`</${a}>`)}))}window[j]=!0})(l),l[M])return l[M];const s=P({target:l}),i=d(()=>{s(),delete l[M]},"n"),n=Object.assign(i,{cleanup:i,update:()=>L(l)});return Object.defineProperty(l,M,{configurable:!0,value:n}),n},"y");b.browser=L,g=L,g=G}},E={};function V(w){var b=E[w];if(b!==void 0)return b.exports;var g=E[w]={exports:{}};return $[w](g,g.exports,V),g.exports}d(V,"__webpack_require__");var J={};(()=>{"use strict";var w=V(676);function b(){let u,c;const r=d(()=>{const m=document.getElementById("__marp-vscode"),v=!!m;u!==v?(document.body.classList.toggle("marp-vscode",v),v?c=(0,w.browser)():(c?.cleanup(),c=void 0),u=v):v&&c?.update(),u?(m&&g(m),x()):k()},"updateCallback");window.addEventListener("load",()=>window.setTimeout(r,100)),window.addEventListener("vscode.markdown.updateContent",r),r()}d(b,"preview");const g=d(u=>{u.querySelectorAll("[is]").forEach(c=>{if(c.nodeName.includes("-")||document.createElement(c.nodeName).constructor!==c.constructor)return;const{outerHTML:m}=c;c.outerHTML=m,console.debug("[marp-vscode] Custom element has been upgraded forcibly:",m.slice(0,m.indexOf(">")+1||void 0))})},"forceUpgradeCustomElements"),x=d(()=>{const u=document.querySelectorAll("style:not(#__marp-vscode-style,#_defaultStyles,[data-marp-vscode-body])"),c=document.querySelectorAll('link[rel="stylesheet"][href]:not([href*="marp-vscode"])');u.forEach(r=>{r.closest("#__marp-vscode")||(r.dataset.marpVscodeBody=r.textContent??"",r.textContent="")}),c.forEach(r=>{if(r.closest("#__marp-vscode"))return;const{href:m}=r;r.dataset.marpVscodeHref=m,r.removeAttribute("href")})},"removeStyles"),k=d(()=>{const u=document.querySelectorAll("style[data-marp-vscode-body]"),c=document.querySelectorAll("link[data-marp-vscode-href]");u.forEach(r=>{r.textContent=r.dataset.marpVscodeBody||"",delete r.dataset.marpVscodeBody}),c.forEach(r=>{r.href=r.dataset.marpVscodeHref||"",delete r.dataset.marpVscodeHref})},"restoreStyles");b()})()})();})();
-
-</script>
-
-        </body>
-        </html>
+</body>
+</html>
